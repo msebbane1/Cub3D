@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/11 11:07:17 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:53:36 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,5 @@ void	check_valid_format(t_cub *cub)
 /*
 *Check que c'est bien un path apres le format (commence bien par un path ./)
 *check que c'est bien une couleur (split les ,)
+*Erreur quand je met la meme lettre a la 1ere ligne de ma map m'affiche l'erreur [pas la bonne erreur]  
 */
