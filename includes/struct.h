@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/10 16:20:16 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:55:16 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct s_map {
 	char		**str;
 	int			index;
 	int			index_spaces;
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			c;
+	int			f;
 	int			sky[3];
 	int			floor[3];
 	t_img		wall[4];

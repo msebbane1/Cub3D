@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 14:26:50 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:56:01 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void	game_hook(t_cub *cub)
 void	init_parse(t_cub *cub)
 {
 	cub->map.index = 0;
+	cub->map.no = 0;
+	cub->map.so = 0;
+	cub->map.we = 0;
+	cub->map.ea = 0;
+	cub->map.c = 0;
+	cub->map.f = 0;
 	cub->map.index_spaces = 0;
 	cub->player.nb_player = 0;
 }
