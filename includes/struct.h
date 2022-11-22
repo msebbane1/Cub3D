@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 15:55:16 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/22 17:06:14 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_img {
 
 typedef struct s_map {
 	char		**str;
+	char		**rmap;
 	int			index;
 	int			index_spaces;
 	int			no;

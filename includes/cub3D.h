@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 15:17:25 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:54:13 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	check_colors(t_cub *cub, char *str, char c);
 int		ft_atoi(char *nptr);
 int		checkparam(char **str);
 void	check_texture_path(char	*path);
+//**********************************REMPLACE******************************//
+void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//
 t_img	init_img(void	*mlx, char *path);
 //**********************************PLAYER********************************//

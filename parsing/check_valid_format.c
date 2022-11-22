@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 15:59:39 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:01:59 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,13 @@ void	check_valid_format(t_cub *cub)
 	while (cub->map.str[i])
 	{
 		map_split = ft_split(cub->map.str[i], ' ');
-		if (checkparam(map_split) > 2)
-			error_msg("Error\nIncorect Param");
+		y = 0;
+		while (map_split[0][y])
+		{
+			if (map_split[0][y] == '\n')
+				map_split[0][y] = '\0';
+			y++;
+		}
 		parse_texture(cub, map_split);
 		i++;
 	}

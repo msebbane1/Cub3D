@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 15:56:01 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/22 17:27:03 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	main(int argc, char **argv)
 	check_valid_format(cub);
 	check_valid_map(cub);
 	test_print(cub);
+	remplace(cub);
 	//game_start(&cub);
 	// afficher image check la taille des image que je vais recuperer
 	// voir rayCasting
