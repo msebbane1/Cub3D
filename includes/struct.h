@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 16:12:58 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:07:51 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_img {
 
 typedef struct s_map {
 	char		**str;
+	char		**rmap;
 	int			index;
 	int			index_spaces;
 	int			no;

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 16:53:36 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:09:07 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		check_params(char **str);
 void	check_texture_path(char	*path);
 int		ft_skip_format(char *line);
 int		ft_char_texture(char *line);
+//**********************************REMPLACE******************************//
+void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//
 t_img	init_img(void	*mlx, char *path);
 //**********************************PLAYER********************************//

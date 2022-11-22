@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 18:03:37 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:08:17 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,13 @@ void	check_valid_format(t_cub *cub)
 	while (cub->map.str[i])
 	{
 		map_split = ft_split(cub->map.str[i], ' ');
+		y = 0;
+		while (map_split[0][y])
+		{
+			if (map_split[0][y] == '\n')
+				map_split[0][y] = '\0';
+			y++;
+		}
 		parse_texture(cub, map_split);
 		i++;
 	}
@@ -152,7 +159,3 @@ void	check_valid_format(t_cub *cub)
 	//if (check_path_texture(cub))
 		//error_msg("Error\nInvalid path for textures"); //
 }
-
-/*
-* 
-*/
