@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 17:15:50 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:52:16 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	if (cub->map.str[l][c] == 'N' || cub->map.str[l][c] == 'S' ||
 		cub->map.str[l][c] == 'W' || cub->map.str[l][c] == 'E')
 	{
-		//printf("l = %d et y = %d\n\n", l, cub->map.size.y);
 		if (l + 1 == cub->map.size.y)
 			return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
@@ -170,10 +169,6 @@ void	check_valid_map(t_cub *cub)
 	l = cub->map.index_spaces;
 	c = 0;
 	printf("index_spaces = %d\n", l);
-	//if (check_walls_first_line(cub))
-		//error_msg("Error\nInvalid map not closed[firstline]");
-	//if (check_spaces(cub))
-		//error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -191,13 +186,18 @@ void	check_valid_map(t_cub *cub)
 		}
 		l++;
 	}
-	cub->map.size.x = c;
 	if (check_walls_first_line_char(cub))
 		error_msg("Error\nInvalid map not closed[firstchar]");
 	if (cub->player.nb_player != 1)
 		error_msg("Error\nNeed one player");
+	cub->map.size.x = c;
 }
 /*
-*Check le player en dehors de la map
+*
 *Ajouter tous les whitespaces pour check char
+* ajouter pour \n en plein milieu de la map ? :
+//if (check_walls_first_line(cub))
+		//error_msg("Error\nInvalid map not closed[firstline]");
+	//if (check_spaces(cub))
+		//error_msg("Error\nInvalid map something is empty");
 */

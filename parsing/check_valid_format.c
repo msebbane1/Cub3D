@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 18:08:17 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:51:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_new_index(t_cub *cub)
 	return (index);
 }
 
-/*int	parse_color(t_cub *cub, char **map_split)
+int	parse_color(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "C"))
 	{
@@ -81,50 +81,49 @@ int	check_new_index(t_cub *cub)
 		cub->map.f++;
 	}
 	else
-		return (1);
-	return (0);
-}*/
+		return (0);
+	return (1);
+}
 
-void	parse_texture(t_cub *cub, char **map_split)
+int	parse_texture(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "NO"))
 	{
 		cub->map.wall[0] = init_img(cub->mlx, map_split[1]);
 		cub->map.no++;
-		cub->map.index++;
-		printf("no2 = %d\n", cub->map.no);
 	}
 	else if (!ft_strcmp(map_split[0], "SO"))
 	{
 		cub->map.wall[1] = init_img(cub->mlx, map_split[1]);
 		cub->map.so++;
-		cub->map.index++;
-		printf("no = %d\n", cub->map.so);
 	}
 	else if (!ft_strcmp(map_split[0], "WE"))
 	{
 		cub->map.wall[2] = init_img(cub->mlx, map_split[1]);
 		cub->map.we++;
-		cub->map.index++;
 	}
 	else if (!ft_strcmp(map_split[0], "EA"))
 	{
 		cub->map.wall[3] = init_img(cub->mlx, map_split[1]);
 		cub->map.ea++;
-		cub->map.index++;
 	}
-	else if (!ft_strcmp(map_split[0], "C"))
+	else
+		return (0);
+	return (1);
+}
+
+int	check_parse_format(t_cub *cub, char **map_split)
+{
+	if (parse_texture(cub, map_split))
+		return (1);
+	else if (parse_color(cub, map_split))
+		return (1);
+	else
 	{
-		check_colors(cub, map_split[1], 'C');
-		cub->map.c++;
-		cub->map.index++;
+		//free map_split
+		return (0);
 	}
-	else if (!ft_strcmp(map_split[0], "F"))
-	{
-		check_colors(cub, map_split[1], 'F');
-		cub->map.f++;
-		cub->map.index++;
-	}
+	return (1);
 }
 
 void	check_valid_format(t_cub *cub)
@@ -145,17 +144,24 @@ void	check_valid_format(t_cub *cub)
 				map_split[0][y] = '\0';
 			y++;
 		}
-		parse_texture(cub, map_split);
+		if (check_parse_format(cub, map_split))
+			cub->map.index++;
+		//else
+			//error_msg("Error\nInvalid Param") // Ajouter pour espace ??
 		i++;
 	}
 	cub->map.index_spaces = check_new_index(cub);
 	printf("index = %d\n", cub->map.index);
-	if ((cub->map.index != 6 && !check_walls_first_line_char(cub)) || (cub->map.no != 1 || cub->map.so != 1 || cub->map.we != 1
-			|| cub->map.ea != 1 || cub->map.c != 1 || cub->map.no != 1))
+	if (cub->map.index == 0)
+		error_msg("Error\nMissing format");
+	if ((cub->map.index != 6 && !check_walls_first_line_char(cub)))
 		error_msg("Error\nInvalid format :Missing textures or colors");
-	printf("so = %d\n", cub->map.so);
-	//if (cub->map.index == 6 )
-			//error_msg("Error\nInvalid format :Missi");
+	if ((cub->map.no != 1 || cub->map.so != 1 || cub->map.we != 1
+			|| cub->map.ea != 1 || cub->map.c != 1 || cub->map.no != 1))
+		error_msg("Error\nInvalid format :Double textures or colors");
 	//if (check_path_texture(cub))
-		//error_msg("Error\nInvalid path for textures"); //
+		//error_msg("Error\nInvalid path for textures"); // a ajouter apres textures
 }
+/*
+*Creer une erreur si il y a que la map [missing map] check espace ou 1 apres index + 1
+*/
