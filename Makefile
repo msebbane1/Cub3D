@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/11/10 11:33:18 by msebbane         ###   ########.fr        #
+#    Updated: 2022/11/17 16:27:25 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
 
 SRCS = GNL/get_next_line_utils.c GNL/get_next_line.c\
-	   srcs/main.c srcs/libft.c srcs/error_msg.c srcs/ft_split.c srcs/check_valid_format.c\
-	   srcs/malloc_map.c srcs/read_map.c srcs/check_valid_map.c\
-	   srcs/test_print.c srcs/ft_strtrim.c srcs/open_img.c\
+	   srcs/main.c libft/libft.c parsing/error_msg.c libft/ft_split.c parsing/check_valid_format.c\
+	   parsing/read_map.c parsing/check_valid_map.c parsing/check_colors.c\
+	   srcs/test_print.c libft/ft_strtrim.c srcs/open_img.c libft/ft_atoi.c\
 
 SRCS_BONUS = 
 

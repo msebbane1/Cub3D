@@ -1,73 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc_map.c                                       :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/10 10:21:11 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:21:23 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-/*
-int	count_lines_x(int fd)
+void	copy_map(char **argv, t_cub *cub)
 {
-	int		lines;
-	int		ret;
-	char	c;
+	int		fd;
+	char	*line;
+	int		i;
+	char	**split_map;
 
-	lines = 0;
-	ret = 1;
-	c = '\x00';
-	while (ret == 1 && c != '\n')
+	line = NULL;
+	i = 0;
+	split_map = NULL;
+	fd = open(argv[1], O_RDONLY);
+	while (get_next_line(fd, &line))
 	{
-		ret = read(fd, &c, 1);
-		lines++;
+		//if (ft_strcmp(*split_map, "\n"))
+		//split_map = ft_split(line, ' ');
+		cub->map.str[i++] = ft_strdup(line);
+		free(line);
 	}
-	return (lines - 1);
-}*/
+	cub->map.str[i] = NULL;
+	close(fd);
+}
 
-/*int	count_lines(int fd)
-{
-	int		lines;
-	int		ret;
-	char	c;
-
-	lines = 0;
-	ret = 1;
-	while (ret == 1)
-	{
-		ret = read(fd, &c, 1);
-		if (c == '\n')
-			lines++;
-	}
-	return (lines);
-}*/
-
-
-/*int	count_lines(int fd)
-{
-	int		lines;
-	char	*r;
-
-	lines = 0;
-	r = 0;
-	while (1)
-	{
-		r = get_next_line(fd);
-		if (r == 0)
-		{
-			close(fd);
-			break ;
-		}
-		free (r);
-		lines++;
-	}
-	return (lines);
-}*/
 int	count_lines(int fd)
 {
 	char	*line;
@@ -83,7 +49,7 @@ int	count_lines(int fd)
 	return (i++);
 }
 
-void	malloc_map(char **av, t_cub *cub)
+void	read_map(char **av, t_cub *cub)
 {
 	int		fd;
 
@@ -93,4 +59,5 @@ void	malloc_map(char **av, t_cub *cub)
 	cub->map.str = malloc(sizeof(char *) * (cub->map.size.y + 1));
 	if (!cub->map.str)
 		error_msg("Error\nWrong map");
+	copy_map(av, cub);
 }

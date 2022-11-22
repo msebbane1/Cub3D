@@ -6,26 +6,51 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/11 16:13:48 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:23:17 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+int	line_size_max(t_cub *cub)
+{
+	int		l;
+	int		size_max;
+
+	l = cub->map.index_spaces;
+	size_max = 0;
+	while (cub->map.str[l])
+	{
+		if (size_max < ft_strlen(cub->map.str[l]))
+			size_max = ft_strlen(cub->map.str[l]);
+		l++;
+	}
+	return (size_max);
+}
+
 int	check_walls_zero(t_cub *cub, int l, int c)
 {
+	int	size_l2;
+
+	size_l2 = ft_strlen(cub->map.str[l - 1]);
 	if (cub->map.str[l][c] == '0')
 	{
-		if (cub->map.str[l - 1][c] == ' ')
+		//printf("l = %d et y = %d\n\n", l, cub->map.size.y);
+		if (l + 1 == cub->map.size.y)
+			return (1);
+		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
+			|| cub->map.str[l - 1][c] == '\n')
 			return (1);
 		if (cub->map.str[l + 1] != NULL)
 		{
-			if (cub->map.str[l + 1][c] == ' ')
+			if (ft_strlen(cub->map.str[l + 1]) < c
+				|| cub->map.str[l + 1][c] == ' '
+					|| cub->map.str[l + 1][c] == '\n')
 				return (1);
 		}
 		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\n')
 			return (1);
-		if (cub->map.str[l][c - 1] == ' ')
+		if (cub->map.str[l][c - 1] == ' ' || cub->map.str[l][c - 1] == '\n')
 			return (1);
 	}
 	return (0);
@@ -76,34 +101,13 @@ int	check_walls_first_line(t_cub *cub)
 	return (0);
 }
 
-int	check_backslash(t_cub *cub)
-{
-	int		c;
-	int		s;
-	int		l;
-
-	l = cub->map.index_spaces;
-	s = 0;
-	while (cub->map.str[l])
-	{
-		c = 0;
-		if (cub->map.str[l][c] == '\n')
-		{
-			if (l == cub->map.size.y)
-				return (0);
-			else
-				return (1);
-		}
-		c++;
-		l++;
-	}
-	return (0);
-}
-
 int	check_char(char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'S'
-		&& c != 'E' && c != 'W' && c != ' ')
+		&& c != 'W' && c != 'E'
+		&& c != ' ' && c != '\t'
+		&& c != '\r' && c != '\f'
+		&& c != '\v')
 		return (1);
 	return (0);
 }
@@ -120,6 +124,32 @@ int	check_player_pos(t_cub *cub, char c)
 	return (0);
 }
 
+int	check_spaces(t_cub *cub)
+{
+	int		c;
+	int		l;
+
+	l = cub->map.index_spaces;
+	printf("index_spaces = %d\n", l);
+	while (cub->map.str[l] != NULL)
+	{
+		c = 0;
+		while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
+		{
+			if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == ' '
+				|| cub->map.str[l][c] == '\t')
+				c++;
+			else
+				break ;
+		}
+		if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == '\0')
+			return (1);
+		printf("cub->map.str[l] = %s\n", cub->map.str[l]);
+		l++;
+	}
+	return (0);
+}
+
 void	check_valid_map(t_cub *cub)
 {
 	int		l;
@@ -129,9 +159,11 @@ void	check_valid_map(t_cub *cub)
 	l = cub->map.index_spaces;
 	y = 0;
 	c = 0;
-	printf("l = %d\n", l);
-	if (check_backslash(cub))
-		error_msg("Error\nInvalid map something is empty");
+	printf("index_spaces = %d\n", l);
+	//if (check_walls_first_line(cub))
+		//error_msg("Error\nInvalid map not closed[firstline]");
+	//if (check_spaces(cub))
+		//error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -148,8 +180,6 @@ void	check_valid_map(t_cub *cub)
 		l++;
 	}
 	cub->map.size.x = c;
-	if (check_walls_first_line(cub))
-		error_msg("Error\nInvalid map not closed[firstline]");
 	if (check_walls_first_line_char(cub))
 		error_msg("Error\nInvalid map not closed[firstchar]");
 	if (cub->player.nb_player != 1)
@@ -157,4 +187,5 @@ void	check_valid_map(t_cub *cub)
 	/*if(l < 7 && check_valid_map)
 		error_msg("Error\nMissing map");*/
 	//Check le player en dehors de la map
+	//whitespaces pour check char
 }

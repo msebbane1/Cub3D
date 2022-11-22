@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/10 16:20:27 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/16 03:22:03 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	main(int argc, char **argv)
 	cub = malloc(sizeof(t_cub));
 	init_parse(cub);
 	start_error(argc, argv);
-	malloc_map(argv, cub);
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);

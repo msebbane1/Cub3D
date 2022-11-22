@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/14 11:51:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/11 14:06:11 by msebbane         ###   ########.fr       */
+/*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
+/*   Updated: 2022/11/17 12:54:30 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-/*int	checkparam(char **str)
+int	checkparam(char **str)
 {
 	int	i;
 
@@ -21,28 +21,15 @@
 		i++;
 	if (i > 2)
 		return (1);
-	return (1);
-}*/
+	return (0);
+}
 
-void	read_map(char **argv, t_cub *cub)
+void	free_tab(char **str)
 {
-	int		fd;
-	char	*line;
-	int		i;
-	char	**split_map;
+	int	i;
 
-	line = NULL;
 	i = 0;
-	split_map = NULL;
-	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &line))
-	{
-		//if (ft_strcmp(*split_map, "\n"))
-		//split_map = ft_split(line, '\n');
-		cub->map.str[i++] = ft_strdup(line);
-		free(line);
-		//split_map = ft_strtrim(line, " ");
-	}
-	cub->map.str[i] = NULL;
-	close(fd);
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }

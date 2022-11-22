@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/10 14:58:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:29:41 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ char	*ft_strtrim(char *s1, char *set);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strdup(char *s);
 //**********************************PARSING********************************//
-void	malloc_map(char **av, t_cub *cub);
-void	read_map(char **argv, t_cub *cub);
+void	read_map(char **av, t_cub *cub);
 void	check_valid_map(t_cub *cub);
 void	check_valid_format(t_cub *cub);
 int		check_char(char c);
-int		skip_spaces(char *line, int *i);
+int		check_walls_first_line_char(t_cub *cub);
+void	check_colors(t_cub *cub, char *str, char c);
+int		ft_atoi(char *nptr);
 //**********************************TEXTURES*****************************//
 t_img	init_img(void	*mlx, char *path);
 //**********************************PLAYER********************************//
