@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/16 03:22:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:26:50 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	main(int argc, char **argv)
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	// PARSING verfier si la map est valid check tout
 	test_print(cub);
 	//game_start(&cub);
 	// afficher image check la taille des image que je vais recuperer

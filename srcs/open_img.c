@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:04:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/10 11:28:16 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:22:54 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,7 @@ t_img	init_img(void	*mlx, char *path)
 {
 	t_img	img;
 
-	if (!check_file(path))
-	{
-		img.img = mlx_xpm_file_to_image(mlx, path, &img.width, &img.height);
-		return (img);
-	}
-	else
-	{
-		img.img = NULL;
-		return(img);
-	}
+	//check_texture_path(path); //A remettre avec les vrai texture
+	img.img = mlx_xpm_file_to_image(mlx, path, &img.width, &img.height);
+	return (img);
 }

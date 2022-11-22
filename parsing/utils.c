@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/17 12:54:30 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:37:58 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	checkparam(char **str)
 	i = 0;
 	if (str[i])
 		i++;
-	if (i > 2)
-		return (1);
-	return (0);
+	//if (i > 2)
+		//return (1);
+	return (i);
 }
 
 void	free_tab(char **str)

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 14:13:05 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:22:04 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,28 @@ int	check_path_texture(t_cub *cub)
 	return (0);
 }
 
+void	check_texture_path(char	*path)
+{
+	int	fd;
+	int	fd2;
+
+	fd = open(path, O_RDONLY);
+	fd2 = open(path, O_DIRECTORY);
+	if (fd < 0)
+	{
+		error_msg("Error\nInvalid texture : doesn't exist");
+		close(fd);
+	}
+	if (fd2 != -1)
+	{
+		error_msg("Error\nTexture path invalid :Directory");
+		close(fd2);
+	}
+	close(fd);
+	close(fd2);
+	//Fonction qui doit checker .xpm pour la texture
+}
+
 int	parse_color(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "C"))
@@ -44,17 +66,27 @@ void	parse_texture(t_cub *cub, char **map_split)
 {
 	printf("mapspli = %s\n", map_split[0]);
 	if (!ft_strcmp(map_split[0], "NO"))
+	{
 		cub->map.wall[0] = init_img(cub->mlx, map_split[1]);
+		//cub->no_path = ft_strdup(map_split[1]);? + free
+	}
 	else if (!ft_strcmp(map_split[0], "SO"))
+	{
 		cub->map.wall[1] = init_img(cub->mlx, map_split[1]);
+	}
 	else if (!ft_strcmp(map_split[0], "WE"))
+	{
 		cub->map.wall[2] = init_img(cub->mlx, map_split[1]);
+	}
 	else if (!ft_strcmp(map_split[0], "EA"))
+	{
 		cub->map.wall[3] = init_img(cub->mlx, map_split[1]);
+	}
 	else if (!ft_strcmp(map_split[0], "C"))
 		check_colors(cub, map_split[1], 'C');
 	else if (!ft_strcmp(map_split[0], "F"))
 		check_colors(cub, map_split[1], 'F');
+	//else free tab
 }
 
 int	ft_char_texture(char *line)
@@ -114,7 +146,10 @@ void	check_valid_format(t_cub *cub)
 		map_split = ft_split(cub->map.str[i], ' ');
 		if (ft_char_texture(cub->map.str[i]))
 			cub->map.index++;
-		parse_texture(cub, map_split);
+		if (checkparam(map_split) > 2)
+			error_msg("Error\nIncorect Param");
+		else
+			parse_texture(cub, map_split);
 		i++;
 	}
 	cub->map.index_spaces = check_new_index(cub);
