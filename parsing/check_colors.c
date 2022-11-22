@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 14:07:49 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:39:49 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_colors(t_cub *cub, char *str, char c)
 	if (ft_check_letters(str))
 		error_msg("Error\ninvalid RGB: Write numbers for colors");
 	map_split = ft_split(str, ',');
-	while (map_split[i] && i < 3)
+	while (map_split[i])
 	{
 		rgb = ft_atoi(map_split[i]);
 		printf("rgb = %d\n", rgb);

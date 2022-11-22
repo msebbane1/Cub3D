@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 15:56:01 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:52:00 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ void	game_start(t_cub *cub)
 	cub->win = mlx_new_window(cub->mlx,
 			500, 500, "Cub3D");
 	//open_images(*conf);
+}
+void	game_hook(t_cub *cub)
+{
+	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
+								&cub->img.endian);
+	my_mlx_pixel_put(&cub->img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	//mlx_hook(cub.win, 2, 1L << 0, key_hook, &cub);
+	//mlx_hook(cub.win, 17, 1L << 0, win_closed, &cub);
+	mlx_loop(cub->mlx);
 }
 
 void	start_error(int ac, char **av)
@@ -53,18 +64,6 @@ void	start_error(int ac, char **av)
 		error_msg("Error\nInvalid file :Can't read file");
 	close(fd);
 	close(fd2);
-}
-
-void	game_hook(t_cub *cub)
-{
-	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
-	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
-								&cub->img.endian);
-	my_mlx_pixel_put(&cub->img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	//mlx_hook(cub.win, 2, 1L << 0, key_hook, &cub);
-	//mlx_hook(cub.win, 17, 1L << 0, win_closed, &cub);
-	mlx_loop(cub->mlx);
 }
 
 void	init_parse(t_cub *cub)
