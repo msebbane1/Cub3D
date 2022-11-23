@@ -1,0 +1,4 @@
+Map =
+
+0 = vide
+valeur pos = mur ou texture

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 18:51:57 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:10:03 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,27 @@ int	check_parse_format(t_cub *cub, char **map_split)
 	}
 	return (1);
 }
+int		check_characters_valid(t_cub *cub)
+{
+	int	l;
+	int	c;
+
+	l = 0;
+	while (cub->map.str[l])
+	{
+		c = 0;
+		while (cub->map.str[l][c])
+		{
+			if (cub->map.str[l][c] != ' ' && cub->map.str[l][c] != '\t'
+				&& cub->map.str[l][c] != '\r' && cub->map.str[l][c] != '\f'
+				&& cub->map.str[l][c] != '\v')
+				return (1);
+			c++;
+		}
+		l++;
+	}
+	return (0);
+}
 
 void	check_valid_format(t_cub *cub)
 {
@@ -134,6 +155,7 @@ void	check_valid_format(t_cub *cub)
 
 	i = 0;
 	y = 0;
+	//printf("spli = %s", map_split2);
 	while (cub->map.str[i])
 	{
 		map_split = ft_split(cub->map.str[i], ' ');
@@ -145,9 +167,9 @@ void	check_valid_format(t_cub *cub)
 			y++;
 		}
 		if (check_parse_format(cub, map_split))
+		{
 			cub->map.index++;
-		//else
-			//error_msg("Error\nInvalid Param") // Ajouter pour espace ??
+		}
 		i++;
 	}
 	cub->map.index_spaces = check_new_index(cub);

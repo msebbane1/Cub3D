@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
+#    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/11/22 17:22:21 by lbally           ###   ########.fr        #
+#    Updated: 2022/11/23 15:55:53 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = GNL/get_next_line_utils.c GNL/get_next_line.c\
 	   srcs/main.c libft/libft.c parsing/error_msg.c libft/ft_split.c parsing/check_valid_format.c\
 	   parsing/read_map.c parsing/check_valid_map.c parsing/check_colors.c parsing/remplace.c\
 	   srcs/test_print.c libft/ft_strtrim.c srcs/open_img.c libft/ft_atoi.c parsing/utils.c\
+	   srcs/start_game.c
 
 SRCS_BONUS = 
 

@@ -6,40 +6,18 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 18:08:37 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:54:42 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 void	game_start(t_cub *cub)
 {
-	//int	keycode;
-
-	//keycode = 0;
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx,
-			500, 500, "Cub3D");
+			WIDTH, HEIGHT, "Cub3D");
 	//open_images(*conf);
-}
-void	game_hook(t_cub *cub)
-{
-	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
-	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
-								&cub->img.endian);
-	my_mlx_pixel_put(&cub->img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	//mlx_hook(cub.win, 2, 1L << 0, key_hook, &cub);
-	//mlx_hook(cub.win, 17, 1L << 0, win_closed, &cub);
-	mlx_loop(cub->mlx);
 }
 
 void	start_error(int ac, char **av)
@@ -77,6 +55,12 @@ void	init_parse(t_cub *cub)
 	cub->map.f = 0;
 	cub->map.index_spaces = 0;
 	cub->player.nb_player = 0;
+	cub->map.wall[0].img = NULL;
+	cub->map.wall[1].img = NULL;
+	cub->map.wall[2].img = NULL;
+	cub->map.wall[3].img = NULL;
+	cub->map.sky[0] = -1;
+	cub->map.floor[0] = -1;
 }
 
 int	main(int argc, char **argv)
@@ -90,9 +74,9 @@ int	main(int argc, char **argv)
 	check_valid_format(cub);
 	check_valid_map(cub);
 	test_print(cub);
-	remplace(cub);
-	//game_start(&cub);
+	//remplace(cub);
+	game_start(cub);
 	// afficher image check la taille des image que je vais recuperer
 	// voir rayCasting
-	//game_hook(&cub);
+	game_hook(cub);
 }
