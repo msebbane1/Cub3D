@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/15 16:21:23 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:37:55 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@ void	copy_map(char **argv, t_cub *cub)
 	int		fd;
 	char	*line;
 	int		i;
-	char	**split_map;
 
-	line = NULL;
 	i = 0;
-	split_map = NULL;
 	fd = open(argv[1], O_RDONLY);
 	while (get_next_line(fd, &line))
 	{
-		//if (ft_strcmp(*split_map, "\n"))
-		//split_map = ft_split(line, ' ');
 		cub->map.str[i++] = ft_strdup(line);
 		free(line);
 	}

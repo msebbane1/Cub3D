@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 16:53:37 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 08:48:44 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,28 @@ void	free_tab(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
+}
+
+int		check_characters_valid(t_cub *cub)
+{
+	int	l;
+	int	c;
+
+	l = 0;
+	while (cub->map.str[l])
+	{
+		c = 0;
+		while (cub->map.str[l][c])
+		{
+			if (cub->map.str[l][c] != ' ' && cub->map.str[l][c] != '\t'
+				&& cub->map.str[l][c] != '\r' && cub->map.str[l][c] != '\f'
+				&& cub->map.str[l][c] != '\v')
+				return (1);
+			c++;
+		}
+		l++;
+	}
+	return (0);
 }
 
 int	check_params(char **str)

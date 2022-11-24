@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/23 15:54:42 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 10:19:37 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	game_start(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx,
-			WIDTH, HEIGHT, "Cub3D");
-	//open_images(*conf);
+			SCREEN_W, SCREEN_H, "Cub3D");
 }
 
 void	start_error(int ac, char **av)
@@ -73,10 +72,10 @@ int	main(int argc, char **argv)
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	test_print(cub);
 	//remplace(cub);
 	game_start(cub);
+	game_hook(cub);
+	test_print(cub);
 	// afficher image check la taille des image que je vais recuperer
 	// voir rayCasting
-	game_hook(cub);
 }

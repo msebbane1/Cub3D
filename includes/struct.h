@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/23 17:11:35 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 08:42:54 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define SCREEN_W 640
+# define SCREEN_H 480
+# define TEX_W 64
+# define TEX_H 64
+# define MAP_L 24
+# define MAP_H 24
+# define W 13
+# define A 0
+# define D 2
+# define S 1
+# define ESC 53
+# define UP 126
+# define DOWN 125
+# define RIGHT 124
+# define LEFT 123
 
 typedef struct s_coord {
 	int	x;
@@ -44,6 +59,7 @@ typedef struct s_ray
 typedef struct s_player
 {
 	int		move;
+	int		nb_player;
 	double	pos_x; // pos de depart du joueur
 	double	pos_y; // pos de depart du joueur
 	double	dir_x; //direction initial du joueur
@@ -73,6 +89,8 @@ typedef struct s_map {
 	int			ea;
 	int			c;
 	int			f;
+	int			color_floor;
+	int			color_sky;
 	int			sky[3];
 	int			floor[3];
 	t_img		wall[4];

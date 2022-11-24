@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 18:52:16 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:44:11 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	size_l2 = ft_strlen(cub->map.str[l - 1]);
 	if (cub->map.str[l][c] == '0')
 	{
-		if (l + 1 == cub->map.size.y)
-			return (1);
+		//if (l + 1 == cub->map.size.y)
+			//return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\n')
 			return (1);

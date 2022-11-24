@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 10:23:46 by bleroy            #+#    #+#             */
-/*   Updated: 2022/01/31 12:12:00 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:36:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@
 # include <stdlib.h>
 # include <string.h>
 
-char	*gnl_strjoin(char const *s1, char const *s2);
-char	*gnl_strchr(const char *s, int c);
-void	*gnl_calloc(size_t count, size_t size);
-void	gnl_bzero(void *s, size_t n);
-size_t	gnl_strlen(const char *s);
-char	*get_next_line(int fd, char **sasoule);
+int		get_next_line(int fd, char **line);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlen2(const char *s);
+void	ft_bzero(void *s, size_t n);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup2(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

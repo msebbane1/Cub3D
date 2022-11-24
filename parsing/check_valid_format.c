@@ -6,13 +6,13 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/23 15:10:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:48:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-/*int	check_path_texture(t_cub *cub)
+int	check_path_texture(t_cub *cub)
 {
 	int	i;
 
@@ -26,28 +26,6 @@
 		}
 	}
 	return (0);
-}*/
-
-void	check_texture_path(char	*path)
-{
-	int	fd;
-	int	fd2;
-
-	fd = open(path, O_RDONLY);
-	fd2 = open(path, O_DIRECTORY);
-	if (fd < 0)
-	{
-		error_msg("Error\nInvalid texture : doesn't exist");
-		close(fd);
-	}
-	if (fd2 != -1)
-	{
-		error_msg("Error\nTexture path invalid :Directory");
-		close(fd2);
-	}
-	close(fd);
-	close(fd2);
-	//Fonction qui doit checker .xpm pour la texture
 }
 
 int	check_new_index(t_cub *cub)
@@ -89,22 +67,26 @@ int	parse_texture(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "NO"))
 	{
-		cub->map.wall[0] = init_img(cub->mlx, map_split[1]);
+		check_texture_path(map_split[1]);
+		//cub->map.wall[0] = init_img(cub->mlx, map_split[1]);
 		cub->map.no++;
 	}
 	else if (!ft_strcmp(map_split[0], "SO"))
 	{
-		cub->map.wall[1] = init_img(cub->mlx, map_split[1]);
+		check_texture_path(map_split[1]);
+		//cub->map.wall[1] = init_img(cub->mlx, map_split[1]);
 		cub->map.so++;
 	}
 	else if (!ft_strcmp(map_split[0], "WE"))
 	{
-		cub->map.wall[2] = init_img(cub->mlx, map_split[1]);
+		check_texture_path(map_split[1]);
+		//cub->map.wall[2] = init_img(cub->mlx, map_split[1]);
 		cub->map.we++;
 	}
 	else if (!ft_strcmp(map_split[0], "EA"))
 	{
-		cub->map.wall[3] = init_img(cub->mlx, map_split[1]);
+		check_texture_path(map_split[1]);
+		//cub->map.wall[3] = init_img(cub->mlx, map_split[1]);
 		cub->map.ea++;
 	}
 	else
@@ -125,27 +107,6 @@ int	check_parse_format(t_cub *cub, char **map_split)
 	}
 	return (1);
 }
-int		check_characters_valid(t_cub *cub)
-{
-	int	l;
-	int	c;
-
-	l = 0;
-	while (cub->map.str[l])
-	{
-		c = 0;
-		while (cub->map.str[l][c])
-		{
-			if (cub->map.str[l][c] != ' ' && cub->map.str[l][c] != '\t'
-				&& cub->map.str[l][c] != '\r' && cub->map.str[l][c] != '\f'
-				&& cub->map.str[l][c] != '\v')
-				return (1);
-			c++;
-		}
-		l++;
-	}
-	return (0);
-}
 
 void	check_valid_format(t_cub *cub)
 {
@@ -154,18 +115,10 @@ void	check_valid_format(t_cub *cub)
 	char	**map_split;
 
 	i = 0;
-	y = 0;
-	//printf("spli = %s", map_split2);
 	while (cub->map.str[i])
 	{
 		map_split = ft_split(cub->map.str[i], ' ');
 		y = 0;
-		while (map_split[0][y])
-		{
-			if (map_split[0][y] == '\n')
-				map_split[0][y] = '\0';
-			y++;
-		}
 		if (check_parse_format(cub, map_split))
 		{
 			cub->map.index++;
@@ -186,4 +139,5 @@ void	check_valid_format(t_cub *cub)
 }
 /*
 *Creer une erreur si il y a que la map [missing map] check espace ou 1 apres index + 1
+*Mauvaise gestion des tab et espaces + color apres un espace split
 */

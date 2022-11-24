@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/23 15:57:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:35:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <mlx.h>
-# include "../GNL/get_next_line.h"
+# include "../g/get_next_line.h"
 # include "key_hook.h"
 # include "struct.h"
 
@@ -44,10 +45,13 @@ int		check_params(char **str);
 void	check_texture_path(char	*path);
 int		ft_skip_format(char *line);
 int		ft_char_texture(char *line);
+int		create_rgb(int r, int g, int b);
 //**********************************REMPLACE******************************//
 void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//
 t_img	init_img(void	*mlx, char *path);
+//***********************************DRAW***************************//
+void	draw_color_backgound(t_cub *cub);
 //**********************************GAME*****************************//
 void	game_hook(t_cub *cub);
 //**********************************PLAYER********************************//

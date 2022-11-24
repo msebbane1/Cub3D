@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/23 14:58:26 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 08:31:06 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,23 @@ int	ft_check_spac(char *line)
 	return (0);
 }
 
+int	create_rgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
+
 void	ft_convert_rgb_floor(t_cub *cub, char **map_split)
 {
-	cub->map.floor[0] = ft_atoi(map_split[0]) << 16;
-	cub->map.floor[1] = ft_atoi(map_split[1]) << 8;
+	cub->map.floor[0] = ft_atoi(map_split[0]);
+	cub->map.floor[1] = ft_atoi(map_split[1]);
 	cub->map.floor[2] = ft_atoi(map_split[2]);
 	printf("floor = %d\n", cub->map.floor[0]);
 }
 
 void	ft_convert_rgb_sky(t_cub *cub, char **map_split)
 {
-	cub->map.sky[0] = ft_atoi(map_split[0]) << 16;
-	cub->map.sky[1] = ft_atoi(map_split[1]) << 8;
+	cub->map.sky[0] = ft_atoi(map_split[0]);
+	cub->map.sky[1] = ft_atoi(map_split[1]);
 	cub->map.sky[2] = ft_atoi(map_split[2]);
 }
 
@@ -100,8 +105,15 @@ void	check_colors(t_cub *cub, char *str, char c)
 	if (i != 3)
 		error_msg("Error\ninvalid RBG: You must have 3 colors");
 	if (i == 3 && c == 'F')
+	{
 		ft_convert_rgb_floor(cub, map_split);
+		cub->map.color_floor = create_rgb(cub->map.floor[0], cub->map.floor[1],
+			cub->map.floor[2]);
+	}
 	if (i == 3 && c == 'C')
+	{
 		ft_convert_rgb_sky(cub, map_split);
+		cub->map.color_sky = create_rgb(cub->map.sky[0], cub->map.sky[1], cub->map.sky[2]);
+	}
 	printf(" i = %d\n", i);
 }
