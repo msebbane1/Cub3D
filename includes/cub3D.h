@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 11:35:53 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 12:55:44 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	**ft_split(char *s, char c);
 char	*ft_strtrim(char *s1, char *set);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strdup(char *s);
+char	**ft_split2(char *str, char c);
 //**********************************PARSING********************************//
 void	read_map(char **av, t_cub *cub);
 void	check_valid_map(t_cub *cub);

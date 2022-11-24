@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 11:44:11 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:29:36 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	if (cub->map.str[l][c] == 'N' || cub->map.str[l][c] == 'S' ||
 		cub->map.str[l][c] == 'W' || cub->map.str[l][c] == 'E')
 	{
-		if (l + 1 == cub->map.size.y)
-			return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\n')
 			return (1);
@@ -165,10 +163,14 @@ void	check_valid_map(t_cub *cub)
 {
 	int		l;
 	int		c;
+	int		y;
 
 	l = cub->map.index_spaces;
 	c = 0;
+	y = cub->map.index_spaces;
 	printf("index_spaces = %d\n", l);
+	if (check_spaces(cub))
+		error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -198,6 +200,4 @@ void	check_valid_map(t_cub *cub)
 * ajouter pour \n en plein milieu de la map ? :
 //if (check_walls_first_line(cub))
 		//error_msg("Error\nInvalid map not closed[firstline]");
-	//if (check_spaces(cub))
-		//error_msg("Error\nInvalid map something is empty");
 */

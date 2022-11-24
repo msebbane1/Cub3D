@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 11:48:53 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:37:51 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	parse_color(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "C"))
 	{
+		printf(" spli = %s\n",map_split[1]);
 		check_colors(cub, map_split[1], 'C');
 		cub->map.c++;
 	}
@@ -111,18 +112,22 @@ int	check_parse_format(t_cub *cub, char **map_split)
 void	check_valid_format(t_cub *cub)
 {
 	int		i;
-	int		y;
 	char	**map_split;
+	int		y;
 
 	i = 0;
+	y = 0;
 	while (cub->map.str[i])
 	{
-		map_split = ft_split(cub->map.str[i], ' ');
+		map_split = ft_split2(cub->map.str[i], ' ');
 		y = 0;
-		if (check_parse_format(cub, map_split))
+		while (map_split[y])
 		{
-			cub->map.index++;
+			map_split[y] = ft_strtrim(map_split[y], "\t");
+			y++;
 		}
+		if (check_parse_format(cub, map_split))
+			cub->map.index++;
 		i++;
 	}
 	cub->map.index_spaces = check_new_index(cub);
