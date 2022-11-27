@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 15:06:49by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/27 19:21:33 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	if (cub->map.str[l][c] == 'N' || cub->map.str[l][c] == 'S' ||
 		cub->map.str[l][c] == 'W' || cub->map.str[l][c] == 'E')
 	{
+		if (l + 1 == cub->map.size.y)
+			return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
-			|| cub->map.str[l - 1][c] == '\n')
+			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
 		if (cub->map.str[l + 1] != NULL)
 		{
 			if (ft_strlen(cub->map.str[l + 1]) < c
 				|| cub->map.str[l + 1][c] == ' '
-					|| cub->map.str[l + 1][c] == '\n')
+					|| cub->map.str[l + 1][c] == '\0')
 				return (1);
 		}
-		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\n')
+		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\0')
 			return (1);
-		if (cub->map.str[l][c - 1] == ' ' || cub->map.str[l][c - 1] == '\n')
+		if (cub->map.str[l][c - 1] == ' ' || cub->map.str[l][c - 1] == '\0')
 			return (1);
 	}
 	return (0);
@@ -45,21 +47,21 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	size_l2 = ft_strlen(cub->map.str[l - 1]);
 	if (cub->map.str[l][c] == '0')
 	{
-		//if (l + 1 == cub->map.size.y)
-			//return (1);
+		if (l + 1 == cub->map.size.y)
+			return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
-			|| cub->map.str[l - 1][c] == '\n')
+			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
 		if (cub->map.str[l + 1] != NULL)
 		{
 			if (ft_strlen(cub->map.str[l + 1]) < c
 				|| cub->map.str[l + 1][c] == ' '
-					|| cub->map.str[l + 1][c] == '\n')
+					|| cub->map.str[l + 1][c] == '\0')
 				return (1);
 		}
-		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\n')
+		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\0')
 			return (1);
-		if (cub->map.str[l][c - 1] == ' ' || cub->map.str[l][c - 1] == '\n')
+		if (cub->map.str[l][c - 1] == ' ' || cub->map.str[l][c - 1] == '\0')
 			return (1);
 	}
 	return (0);
@@ -165,8 +167,8 @@ void	check_valid_map(t_cub *cub)
 	c = 0;
 	y = cub->map.index_spaces;
 	printf("index_spaces = %d\n", l);
-	if (check_spaces(cub))
-		error_msg("Error\nInvalid map something is empty");
+	//if (check_spaces(cub))
+		//error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -194,6 +196,4 @@ void	check_valid_map(t_cub *cub)
 *
 *Ajouter tous les whitespaces pour check char
 * ajouter pour \n en plein milieu de la map ? :
-//if (check_walls_first_line(cub))
-		//error_msg("Error\nInvalid map not closed[firstline]");
 */
