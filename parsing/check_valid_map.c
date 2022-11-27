@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 14:29:36 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:06:49by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,25 +135,21 @@ int	check_player_pos(t_cub *cub, char c)
 
 int	check_spaces(t_cub *cub)
 {
-	int		c;
 	int		l;
+	int		t;
 
 	l = cub->map.index_spaces;
+	t = 0;
 	printf("index_spaces = %d\n", l);
 	while (cub->map.str[l] != NULL)
 	{
-		c = 0;
-		while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
+		while (cub->map.str[l][0] != '\n' && cub->map.str[l][0] != '\0')
 		{
-			if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == ' '
-				|| cub->map.str[l][c] == '\t')
-				c++;
-			else
-				break ;
+			if (t != 0)
+				return (1);
+			l++;
 		}
-		if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == '\0')
-			return (1);
-		printf("cub->map.str[l] = %s\n", cub->map.str[l]);
+		t++;
 		l++;
 	}
 	return (0);
