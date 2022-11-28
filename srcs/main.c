@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 13:40:55 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:39:29 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	//remplace(cub);
+	remplace(cub);
 	game_start(cub);
 	game_hook(cub);
 	test_print(cub);
