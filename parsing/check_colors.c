@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 11:40:58 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:14:20 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int	ft_check_spac(char *line)
 	return (0);
 }
 
-int	create_rgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
 void	ft_convert_rgb_floor(t_cub *cub, char **map_split)
 {
 	cub->map.floor[0] = ft_atoi(map_split[0]);
@@ -57,6 +52,11 @@ void	ft_convert_rgb_sky(t_cub *cub, char **map_split)
 	cub->map.sky[0] = ft_atoi(map_split[0]);
 	cub->map.sky[1] = ft_atoi(map_split[1]);
 	cub->map.sky[2] = ft_atoi(map_split[2]);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 int	check_virgule(char *str)
@@ -108,16 +108,13 @@ void	check_colors(t_cub *cub, char *str, char c)
 	if (c == 'F')
 	{
 		ft_convert_rgb_floor(cub, map_split);
-		ft_convert_rgb_sky(cub, map_split);
-		cub->map.color_floor = create_rgb(cub->map.floor[0], cub->map.floor[1],
+		cub->map.color_floor = create_trgb(0, cub->map.floor[0], cub->map.floor[1],
 				cub->map.floor[2]);
-		printf("FLOOOOR === %d\n", cub->map.color_floor);
 	}
 	if (c == 'C')
 	{
 		ft_convert_rgb_sky(cub, map_split);
-		cub->map.color_sky = create_rgb(cub->map.sky[0], cub->map.sky[1],
+		cub->map.color_sky = create_trgb(0, cub->map.sky[0], cub->map.sky[1],
 				cub->map.sky[2]);
-		printf("SKYYYYYY === %d\n", cub->map.color_sky);
 	}
 }

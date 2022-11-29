@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:04:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 11:50:45 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:15:20 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	check_texture_path(char	*path)
 
 	fd = 0;
 	fd = open(path, O_RDONLY);
-	printf("fd = %d\n", fd);
-	printf("path = |%s|\n", path);
 	fd2 = open(path, O_DIRECTORY);
 	if (fd <= 0)
 	{
