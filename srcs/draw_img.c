@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 07:01:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 08:31:21 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:45:47 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	draw_color_backgound(t_cub *cub)
 
 	x_color = cub->map.color_floor;
 	y_color = cub->map.color_sky;
-	middle_screen = SCREEN_W * SCREEN_H / 2;
-	x = SCREEN_W * SCREEN_H;
+	middle_screen = SCREEN_W * SCREEN_H / 2 - 1;
+	x = SCREEN_W * SCREEN_H - 1;
 	while (x <= middle_screen)
 	{
 		cub->img.addr[x] = x_color;
-		x++;
+		x--;
 	}
 	while (x >= 0)
 	{

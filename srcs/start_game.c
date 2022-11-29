@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 08:42:47 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:50:13 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,35 @@ int	key_hook(int keycode, t_cub *cub)
 	return (0);
 }
 
+void	init_rayon(t_ray *ray)
+{
+	ray->x = 0;
+	ray->y = 0;
+	ray->dir_x = 0;
+	ray->dir_y = 0;
+	ray->delta_x = 0;
+	ray->delta_y = 0;
+	ray->side_x = 0;
+	ray->side_y = 0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->dist = 0;
+	ray->hit = 0;
+	ray->side = 0;
+	ray->wallx = 0;
+	ray->nb = 0;
+	ray->h = 0;
+}
+
 int	loop(t_cub	*cub)
 {
+	t_ray	*ray;
 	//ft_key(cub); // mouvement
+	ray = malloc(sizeof(t_ray));
+	init_rayon(ray);
+	player(cub);
 	draw_color_backgound(cub);
-	//raycasting(cub);
+	raycasting(ray, cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	return (1);
 }

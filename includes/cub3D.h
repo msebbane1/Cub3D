@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 17:09:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:41:07 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,13 @@ void	draw_color_backgound(t_cub *cub);
 //**********************************GAME*****************************//
 void	game_hook(t_cub *cub);
 //**********************************PLAYER********************************//
+void	player(t_cub *cub);
 //**********************************RAY_CASTING****************************//
+void	raycasting(t_ray *ray, t_cub *cub);
+void	init_rayon(t_ray *ray);
+void	init_ray(t_ray *ray, t_cub *cub);
+void	dda(t_ray *ray);
+void	get_step(t_ray *ra, t_cub *cub);
 //**********************************ERROR_MSG********************************//
 char	error_msg(char *msg);
 //**********************************TEST PRINT********************************//

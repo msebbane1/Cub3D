@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 16:26:09 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:11:54 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	size_l2 = ft_strlen(cub->map.str[l - 1]);
 	if (cub->map.str[l][c] == '0')
 	{
-		if (l + 1 == cub->map.size.y)
+/*		if (l + 1 == cub->map.size.y)
+		{
+			printf("LALA1\n");
 			return (1);
+		}*/
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
@@ -137,25 +140,23 @@ int	check_player_pos(t_cub *cub, char c)
 
 int	check_spaces(t_cub *cub)
 {
-	int		c;
 	int		l;
+	int		t;
 
 	l = cub->map.index_spaces;
+	t = 0;
 	printf("index_spaces = %d\n", l);
 	while (cub->map.str[l] != NULL)
 	{
-		c = 0;
-		while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
+		while (cub->map.str[l][0] != '\n' && cub->map.str[l][0] != '\0')
 		{
-			if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == ' '
-				|| cub->map.str[l][c] == '\t')
-				c++;
-			else
+			if (cub->map.str[l] != NULL)
 				break ;
+			if (t != 0)
+				return (1);
+			l++;
 		}
-		if (cub->map.str[l][c] == '\n' || cub->map.str[l][c] == '\0')
-			return (1);
-		printf("cub->map.str[l] = %s\n", cub->map.str[l]);
+		t++;
 		l++;
 	}
 	return (0);
@@ -171,8 +172,8 @@ void	check_valid_map(t_cub *cub)
 	c = 0;
 	y = cub->map.index_spaces;
 	printf("index_spaces = %d\n", l);
-	//if (check_spaces(cub))
-		//error_msg("Error\nInvalid map something is empty");
+	if (check_spaces(cub))
+		error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -196,8 +197,3 @@ void	check_valid_map(t_cub *cub)
 		error_msg("Error\nNeed one player");
 	cub->map.size.x = c;
 }
-/*
-*
-*Ajouter tous les whitespaces pour check char
-* ajouter pour \n en plein milieu de la map ? :
-*/
