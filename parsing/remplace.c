@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/11/29 12:15:37 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:43:53 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	remplace(t_cub *cub)
 		t++;
 	}
 	w = 0;
-	printf("TATATAT ======= %d\n", t);
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
@@ -70,7 +69,6 @@ void	remplace(t_cub *cub)
 	{
 		lolo[i] = '\0';
 		cub->map.rmap[t] = ft_strdupp(lolo);
-		printf("TATATAT ======= %d\n", t);
 		t++;
 	}
 	t = 0;
