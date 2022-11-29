@@ -2,9 +2,8 @@ NO ./textures/bluestone.xpm
 WE ./textures/bluestone.xpm
 SO ./textures/bluestone.xpm
 EA ./textures/bluestone.xpm	
-
 F 255,0,0
-C 100,80,200
+C 0,0,255
 
 1111111111111111111
 1100111001101111111111

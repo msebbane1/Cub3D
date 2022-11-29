@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/28 17:50:13 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:16:32 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	loop(t_cub	*cub)
 	t_ray	*ray;
 	//ft_key(cub); // mouvement
 	ray = malloc(sizeof(t_ray));
-	init_rayon(ray);
+	//init_rayon(ray);
 	player(cub);
 	draw_color_backgound(cub);
 	raycasting(ray, cub);
@@ -63,9 +63,9 @@ int	loop(t_cub	*cub)
 }
 
 void	game_hook(t_cub *cub)
-{
+{	
 	cub->img.img = mlx_new_image(cub->mlx, SCREEN_W, SCREEN_H);
-	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
+	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &cub->img.endian);
 	//Init player faire mouvement + position
 	mlx_hook(cub->win, 2, 1L << 0, key_hook, cub);
