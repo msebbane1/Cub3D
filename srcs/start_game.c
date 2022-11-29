@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 13:16:32 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:44:03 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ int	loop(t_cub	*cub)
 	//ft_key(cub); // mouvement
 	ray = malloc(sizeof(t_ray));
 	//init_rayon(ray);
-	player(cub);
 	draw_color_backgound(cub);
-	raycasting(ray, cub);
+	//raycasting(ray, cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	return (1);
 }
@@ -68,6 +67,7 @@ void	game_hook(t_cub *cub)
 	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &cub->img.endian);
 	//Init player faire mouvement + position
+	position_player(cub);
 	mlx_hook(cub->win, 2, 1L << 0, key_hook, cub);
 	//mlx_hook(cub->win, 2, 0, ft_key_press, cub); // key avec move 
 	//mlx_hook(cub->win, 3, 0, ft_key_release, cub);

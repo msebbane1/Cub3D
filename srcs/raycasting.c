@@ -3,24 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:32:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/11/28 17:42:50 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:45:51 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	raycasting(t_ray *ray, t_cub *cub)
-{
-	ray->nb = 0;
-	while(ray->nb < WIDTH)
-	{
-		init_ray(ray, cub);
-		dda(ray);
-	}
-}
 
 void	init_ray(t_ray *ray, t_cub *cub)
 {
@@ -49,11 +40,11 @@ void	init_ray(t_ray *ray, t_cub *cub)
 	ray->dist = 0;
 }
 
-void	dda(t_ray *ray)
+void	dda(t_ray *ray, t_cub *cub)
 {
-	while(ray->hit == 0)
+	while (ray->hit == 0)
 	{
-		if(ray->side_x < ray->side_y)
+		if (ray->side_x < ray->side_y)
 		{
 			ray->side_x += ray->delta_x;
 			ray->x += ray->step_x;
@@ -62,6 +53,16 @@ void	dda(t_ray *ray)
 		{
 			ray->side_y += ray->delta_y;
 			ray->y += ray->step_y;
+			if (ray->step_y == -1)
+				ray->side = 2;
+			else
+				ray->side = 3;
+		}
+		if (cub->map.rmap[ray->y][ray->x] == '1')
+		{
+			
+			printf("hello\n");
+			ray->hit = 1;
 		}
 	}
 }
@@ -87,5 +88,25 @@ void	get_step(t_ray *ray, t_cub *cub)
 	{
 		ray->step_y = 1;
 		ray->side_y = (ray->y - cub->player.pos_y + 1.0) * ray->delta_y;
+	}
+}
+
+void	raycasting(t_ray *ray, t_cub *cub)
+{
+	double	ratio;
+
+	ratio = ((double) SCREEN_W / (double) SCREEN_H) / (4.0 / 3.0);
+	ray->nb = 0;
+	while (ray->nb < SCREEN_W)
+	{
+		init_ray(ray, cub);
+		//dda(ray, cub);
+		ray->dist = (ray->x - cub->player.pos_x + (1 - ray->step_x) / 2) / ray->dir_x;
+		if (ray->side == 0 || ray->side == 1)
+			ray->dist = (ray->x - cub->player.pos_x + (1 - ray->step_x) / 2) / ray->dir_x;
+		else
+			ray->dist = (ray->y - cub->player.pos_y + (1 - ray->step_y) / 2) / ray->dir_y;
+		ray->h = (int)(((double)SCREEN_H * ratio) / ray->dist);
+		ray->nb++;
 	}
 }

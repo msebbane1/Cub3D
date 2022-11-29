@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 12:14:42 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:47:56 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	if (cub->map.str[l][c] == 'N' || cub->map.str[l][c] == 'S' ||
 		cub->map.str[l][c] == 'W' || cub->map.str[l][c] == 'E')
 	{
-		if (l + 1 == cub->map.size.y)
+		if (l == cub->map.size.y)
 			return (1);
+		printf("hello\n");
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
@@ -47,11 +48,8 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	size_l2 = ft_strlen(cub->map.str[l - 1]);
 	if (cub->map.str[l][c] == '0')
 	{
-/*		if (l + 1 == cub->map.size.y)
-		{
-			printf("LALA1\n");
+		if (l == cub->map.size.y)
 			return (1);
-		}*/
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 			return (1);

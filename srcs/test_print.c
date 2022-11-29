@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:22:14 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/22 17:13:33 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:39:44 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	test_print(t_cub *cub)
 	printf("size line = %d\n", cub->map.size.y);
 	printf("cub->map.index = %d\n", cub->map.index);
 	printf("cub->map.index_spaces = %d\n", cub->map.index_spaces);
-	while (cub->map.str[i])
-		printf("[PRINT]line = %s\n", cub->map.str[i++]);
+	printf("Player : pos_x = %f, pos_y = %f\n", cub->player.pos_x, cub->player.pos_y);
+	while (cub->map.rmap[i])
+		printf("[PRINT]line = %s\n", cub->map.rmap[i++]);
 }
