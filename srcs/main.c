@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/28 17:48:17 by lbally           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:16:11 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 	remplace(cub);
 	game_start(cub);
 	game_hook(cub);
-	test_print(cub);
+	//test_print(cub);
 	// afficher image check la taille des image que je vais recuperer
 	// voir rayCasting
 }
