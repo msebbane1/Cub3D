@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 12:08:23 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:19:17 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int	main(int argc, char **argv)
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	//remplace(cub);
+	remplace(cub);
 	game_start(cub);
 	game_hook(cub);
-	test_print(cub);
+	//test_print(cub);
 	// afficher image check la taille des image que je vais recuperer
 	// voir rayCasting
 }
