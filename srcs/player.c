@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:53 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 17:31:09 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:19:23 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ void	position_player(t_cub *cub)
 	int		l;
 	int		g;
 
-	l = cub->map.index_spaces;
+	l = 0;
 	g = 0;
-	while (cub->map.str[l] != NULL)
+	while (cub->map.rmap[l] != NULL)
 	{
 		c = 0;
-		while (cub->map.str[l][c])
+		while (cub->map.rmap[l][c])
 		{
-			if (cub->map.str[l][c] == 'N' || cub->map.str[l][c] == 'S'
-				|| cub->map.str[l][c] == 'W' || cub->map.str[l][c] == 'E')
+			if (cub->map.rmap[l][c] == 'N' || cub->map.rmap[l][c] == 'S'
+				|| cub->map.rmap[l][c] == 'W' ||cub->map.rmap[l][c] == 'E')
 			{
 				cub->player.pos_x = c + 0.5;
 				cub->player.pos_y = g + 0.5;
-				init_angle_view(cub, cub->map.str[l][c]);
+				init_angle_view(cub, cub->map.rmap[l][c]);
 			}
 			c++;
 		}
