@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 14:28:15 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:05:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		check_params(char **str);
 void	check_texture_path(char	*path);
 int		ft_skip_format(char *line);
 int		ft_char_texture(char *line);
-int		create_rgb(int t, int r, int g, int b);
+int		create_trgb(int t, int r, int g, int b);
 //**********************************REMPLACE******************************//
 void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//
@@ -57,12 +57,13 @@ void	draw_color_backgound(t_cub *cub);
 void	game_hook(t_cub *cub);
 //**********************************PLAYER********************************//
 void	position_player(t_cub *cub);
+void	move_up(t_cub *cub);
 //**********************************RAY_CASTING****************************//
-void	raycasting(t_ray *ray, t_cub *cub);
-void	init_rayon(t_ray *ray);
-void	init_ray(t_ray *ray, t_cub *cub);
-void	dda(t_ray *ray, t_cub *cub);
-void	get_step(t_ray *ra, t_cub *cub);
+void	ft_raycasting(t_cub *cub);
+void	init_ray(t_cub *cub);
+void	init_hit(t_cub *cub);
+void	init_step(t_cub *cub);
+void	init_ray_dist(t_cub *cub);
 //**********************************ERROR_MSG********************************//
 char	error_msg(char *msg);
 //**********************************TEST PRINT********************************//

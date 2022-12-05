@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 13:40:28 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:52:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_parse(t_cub *cub)
 	cub->map.wall[3].img = NULL;
 	cub->map.sky[0] = -1;
 	cub->map.floor[0] = -1;
+	cub->rays.ratio = (D_W / D_H) / (4.0 / 3.0);
 }
 
 int	main(int argc, char **argv)
@@ -72,10 +73,9 @@ int	main(int argc, char **argv)
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	//remplace(cub);
+	remplace(cub);
+	position_player(cub);
 	game_start(cub);
 	game_hook(cub);
 	//test_print(cub);
-	// afficher image check la taille des image que je vais recuperer
-	// voir rayCasting
 }

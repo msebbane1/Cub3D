@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 14:44:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:15:51 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,57 +21,27 @@ int	win_closed(t_cub *cub)
 
 int	key_hook(int keycode, t_cub *cub)
 {
-	//if (keycode == D || keycode == S || keycode == A || keycode == W
-		//|| keycode == ESC)
-		//faire mouvement;
+	if (keycode == W)
+	{
+		printf("w\n");
+		//move_up(cub);
+	}
 	if (keycode == ESC)
 		win_closed(cub);
 	return (0);
 }
 
-void	init_rayon(t_ray *ray)
-{
-	ray->x = 0;
-	ray->y = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->delta_x = 0;
-	ray->delta_y = 0;
-	ray->side_x = 0;
-	ray->side_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->dist = 0;
-	ray->hit = 0;
-	ray->side = 0;
-	ray->wallx = 0;
-	ray->nb = 0;
-	ray->h = 0;
-}
-
-int	loop(t_cub	*cub)
-{
-	t_ray	*ray;
-	//ft_key(cub); // mouvement
-	ray = malloc(sizeof(t_ray));
-	//init_rayon(ray);
-	draw_color_backgound(cub);
-	//raycasting(ray, cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	return (1);
-}
-
 void	game_hook(t_cub *cub)
 {	
+	int	x;
+
 	cub->img.img = mlx_new_image(cub->mlx, SCREEN_W, SCREEN_H);
 	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
-			&cub->img.line_length, &cub->img.endian);
-	//Init player faire mouvement + position
-	position_player(cub);
+			&cub->img.line_length, &x);
+	draw_color_backgound(cub);
+	ft_raycasting(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_hook(cub->win, 2, 1L << 0, key_hook, cub);
-	//mlx_hook(cub->win, 2, 0, ft_key_press, cub); // key avec move 
-	//mlx_hook(cub->win, 3, 0, ft_key_release, cub);
 	mlx_hook(cub->win, 17, 1L << 0, win_closed, cub);
-	mlx_loop_hook(cub->mlx, loop, cub);
 	mlx_loop(cub->mlx);
 }

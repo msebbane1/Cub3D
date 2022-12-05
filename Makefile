@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
+#    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/11/28 17:44:01 by lbally           ###   ########.fr        #
+#    Updated: 2022/12/05 18:05:26 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS = g/get_next_line_utils.c g/get_next_line.c\
 	   srcs/main.c libft/libft.c parsing/error_msg.c libft/ft_split.c parsing/check_valid_format.c\
 	   parsing/read_map.c parsing/check_valid_map.c parsing/check_colors.c parsing/remplace.c\
 	   srcs/test_print.c libft/ft_strtrim.c srcs/open_img.c libft/ft_atoi.c parsing/utils.c\
-	   srcs/start_game.c srcs/draw_img.c libft/ft_split2.c srcs/raycasting.c srcs/player.c
+	   srcs/start_game.c srcs/draw_img.c libft/ft_split2.c srcs/raycasting.c srcs/player.c\
+	   srcs/init_rays.c srcs/movement.c
 
 SRCS_BONUS = 
 

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 12:37:57 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:10:20 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define HEIGHT 1080
 # define SCREEN_W 640
 # define SCREEN_H 480
+# define D_W 640.0
+# define D_H 480.0
 # define TEX_W 64
 # define TEX_H 64
 # define MAP_L 24
@@ -54,6 +56,8 @@ typedef struct s_ray
 	double	wallx;
 	int		nb;
 	int		h;
+	double	ratio;
+	double	rayon;
 }	t_ray;
 
 typedef struct s_player
@@ -66,6 +70,10 @@ typedef struct s_player
 	double	dir_y; //direction initial du joueur
 	double	plane_x; //le plan caméra du joueur
 	double	plane_y; //le plan caméra du joueur
+	double	view;
+	double	angle;
+	double	speed;
+	double	rotspeed;
 }	t_player;
 
 typedef struct s_img {
@@ -104,6 +112,7 @@ typedef struct s_cub {
 	void		*mlx;
 	void		*win;
 	t_img		img;
+	t_ray		rays;
 }	t_cub;
 
 #endif
