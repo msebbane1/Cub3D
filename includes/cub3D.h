@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 13:55:29 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:52:46 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	game_hook(t_cub *cub);
 //**********************************PLAYER********************************//
 void	position_player(t_cub *cub);
 void	move_forward(t_cub *cub);
+void	move_right(t_cub *cub);
+void	move_left(t_cub *cub);
 void	move_backwards(t_cub *cub);
 void	rotate_right(t_cub *cub);
 void	rotate_left(t_cub *cub);

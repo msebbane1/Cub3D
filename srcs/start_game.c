@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:59:40 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:51:11 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	key_hook(int keycode, t_cub *cub)
 		move_forward(cub);
 	if (keycode == S)
 		move_backwards(cub);
+	if (keycode == A)
+		move_left(cub);
+	if (keycode == D)
+		move_right(cub);
 	if (keycode == RIGHT)
 		rotate_right(cub);
 	if (keycode == LEFT)

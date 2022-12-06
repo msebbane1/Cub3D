@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:04:03 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:56:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 19:14:22y lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,24 @@ void	move_forward(t_cub *cub)
 	if (cub->map.rmap[(int)cub->player.pos_y]
 		[(int)(cub->player.pos_x + cub->player.dir_x * SPEED)] != '1')
 		cub->player.pos_x += cub->player.dir_x * SPEED;
+}
+
+void	move_right(t_cub *cub)
+{
+	if (cub->map.rmap[(int)(cub->player.pos_y + cub->player.plane_y * SPEED)]
+		[(int)cub->player.pos_x] != '1')
+		cub->player.pos_y += cub->player.plane_y * SPEED;
+	if (cub->map.rmap[(int)cub->player.pos_y]
+		[(int)(cub->player.pos_x + cub->player.plane_x * SPEED)] != '1')
+		cub->player.pos_x += cub->player.plane_x * SPEED;
+}
+
+void	move_left(t_cub *cub)
+{
+	if (cub->map.rmap[(int)(cub->player.pos_y - cub->player.plane_y * SPEED)]
+		[(int)cub->player.pos_x] != '1')
+		cub->player.pos_y -= cub->player.plane_y * SPEED;
+	if (cub->map.rmap[(int)cub->player.pos_y]
+		[(int)(cub->player.pos_x - cub->player.plane_x * SPEED)] != '1')
+		cub->player.pos_x -= cub->player.plane_x * SPEED;
 }
