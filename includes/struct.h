@@ -6,15 +6,13 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 18:10:20 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:28:28 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 1920
-# define HEIGHT 1080
 # define SCREEN_W 640
 # define SCREEN_H 480
 # define D_W 640.0
@@ -32,6 +30,8 @@
 # define DOWN 125
 # define RIGHT 124
 # define LEFT 123
+# define SPEED 0.95
+# define R_SPEED 0.04
 
 typedef struct s_coord {
 	int	x;
@@ -40,8 +40,8 @@ typedef struct s_coord {
 
 typedef struct s_ray
 {
-	int		x;
-	int		y;
+	int		map_x;
+	int		map_y;
 	double	dir_x;
 	double	dir_y;
 	double	delta_x;
@@ -57,7 +57,9 @@ typedef struct s_ray
 	int		nb;
 	int		h;
 	double	ratio;
-	double	rayon;
+	double	camera;
+	double	rdisdx;
+	double	rdisdy;
 }	t_ray;
 
 typedef struct s_player

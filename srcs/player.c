@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:53 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 18:19:23 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:35:46 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	position_player(t_cub *cub)
 		while (cub->map.rmap[l][c])
 		{
 			if (cub->map.rmap[l][c] == 'N' || cub->map.rmap[l][c] == 'S'
-				|| cub->map.rmap[l][c] == 'W' ||cub->map.rmap[l][c] == 'E')
+				|| cub->map.rmap[l][c] == 'W' || cub->map.rmap[l][c] == 'E')
 			{
-				cub->player.pos_x = c + 0.5;
-				cub->player.pos_y = g + 0.5;
+				cub->player.pos_x += c;
+				cub->player.pos_y += g;
 				init_angle_view(cub, cub->map.rmap[l][c]);
 			}
 			c++;
@@ -76,45 +76,3 @@ void	position_player(t_cub *cub)
 	}
 	printf("Player : pos_y = %f, pos_x = %f\n", cub->player.pos_y, cub->player.pos_x);
 }
-
-/*
-void	define_angle(t_cub *cub)
-{
-	double	dim_wall;
-	double	half_wall;
-
-	dim_wall = 64.0;
-	half_wall = 32.0;
-	cub->rays.nb = 0;
-	cub->player.angle = cub->player.view - half_wall;
-	while (cub->rays.nb < SCREEN_W)
-	{
-		//init_ray(ray, cub);
-		//dda(ray, cub);
-		cub->player.angle += dim_wall / SCREEN_W;
-		cub->rays.nb++;
-	}
-	printf("angle de vue joueur = %f\n", cub->player.angle);
-}
-
-void	player_dir(t_cub *cub, char	map)
-{
-	if (map == 'N')
-	{
-		cub->player.view = 90.0;
-	}
-	if (map == 'S')
-	{
-		cub->player.view = 270.0;
-	}
-	if (map == 'W')
-	{
-		cub->player.view = 180.0;
-	}
-	if (map == 'E')
-	{
-		cub->player.view = 360.0;
-	}
-	define_angle(cub);
-}
-*/

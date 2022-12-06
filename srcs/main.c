@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 18:18:04 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:33:02 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	init_parse(t_cub *cub)
 	cub->map.sky[0] = -1;
 	cub->map.floor[0] = -1;
 	cub->rays.ratio = (D_W / D_H) / (4.0 / 3.0);
+	cub->player.pos_x = 0.5;
+	cub->player.pos_y = 0.5;
 }
 
 int	main(int argc, char **argv)

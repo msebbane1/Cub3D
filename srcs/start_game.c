@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 18:17:25 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:14:19 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,26 @@ int	win_closed(t_cub *cub)
 int	key_hook(int keycode, t_cub *cub)
 {
 	if (keycode == W)
-	{
-		printf("w\n");
-		//move_up(cub);
-	}
+		move_forward(cub);
+	if (keycode == S)
+		move_backwards(cub);
+	if (keycode == D)
+		rotate_right(cub);
+	if (keycode == A)
+		rotate_left(cub);
 	if (keycode == ESC)
 		win_closed(cub);
+	printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
 	return (0);
+}
+
+int	raycast_loop(t_cub *cub)
+{
+	draw_color_backgound(cub);
+	ft_raycasting(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	//printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
+	return (1);
 }
 
 void	game_hook(t_cub *cub)
@@ -38,10 +51,8 @@ void	game_hook(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx, SCREEN_W, SCREEN_H);
 	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &x);
-	draw_color_backgound(cub);
-	ft_raycasting(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	mlx_hook(cub->win, 2, 1L << 0, key_hook, cub);
+	mlx_hook(cub->win, 2, 0, key_hook, cub);
 	mlx_hook(cub->win, 17, 1L << 0, win_closed, cub);
+	mlx_loop_hook(cub->mlx, raycast_loop, cub);
 	mlx_loop(cub->mlx);
 }

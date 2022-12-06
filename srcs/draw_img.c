@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 07:01:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/05 13:57:18 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:16:49 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,6 @@
     texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128 ; //texture grise plate
    }
 */
-/*
-RATIO : -1 = gauche de l'ecran 0 = centre 1 = droite
-*/
-/*void	draw_walls(t_cub *cub)
-{
-	double	ratio;
-
-	ratio = ((double) SCREEN_W / (double) SCREEN_H);
-}*/
 void	draw_color_backgound(t_cub *cub)
 {
 	int	middle_screen;
