@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:28:28 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:59:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@
 # define D 2
 # define S 1
 # define ESC 53
-# define UP 126
-# define DOWN 125
 # define RIGHT 124
 # define LEFT 123
-# define SPEED 0.95
+# define SPEED 0.08
 # define R_SPEED 0.04
 
 typedef struct s_coord {

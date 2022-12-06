@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:04:03 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:23:08 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:56:02 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,58 +48,20 @@ void	rotate_left(t_cub *cub)
 
 void	move_backwards(t_cub *cub)
 {
-	int	pos_x;
-	int	pos_y;
-	int	dir_x;
-	int	dir_y;
-	int	speed;
-
-	pos_x = (int)cub->player.pos_x;
-	pos_y = (int)cub->player.pos_y;
-	dir_y = (int)cub->player.dir_y;
-	dir_x = (int)cub->player.dir_x;
-	speed = (int)SPEED;
-	if (cub->map.rmap[pos_y - dir_y * speed][pos_x] != '1')
+	if (cub->map.rmap[(int)(cub->player.pos_y - cub->player.dir_y * SPEED)]
+		[(int)cub->player.pos_x] != '1')
 		cub->player.pos_y -= cub->player.dir_y * SPEED;
-	if (cub->map.rmap[pos_y][pos_x - dir_x * speed] != '1')
+	if (cub->map.rmap[(int)cub->player.pos_y]
+		[(int)(cub->player.pos_x - cub->player.dir_x * SPEED)] != '1')
 		cub->player.pos_x -= cub->player.dir_x * SPEED;
 }
 
 void	move_forward(t_cub *cub)
 {
-	int	pos_x;
-	int	pos_y;
-	int	dir_x;
-	int	dir_y;
-	int	speed;
-
-	pos_x = (int)cub->player.pos_x;
-	pos_y = (int)cub->player.pos_y;
-	dir_y = (int)cub->player.dir_y;
-	dir_x = (int)cub->player.dir_x;
-	speed = (int)SPEED;
-	printf("map = %c\n", cub->map.rmap[pos_y + dir_y * speed][pos_x]);
-	printf("pos_x = %d\n", pos_x);
-	if (cub->map.rmap[pos_y + dir_y * speed][pos_x] != '1')
-	{
-		printf("ff2\n");
-		//printf("dirx %f, diry %f\n", cub->)
+	if (cub->map.rmap[(int)(cub->player.pos_y + cub->player.dir_y * SPEED)]
+		[(int)cub->player.pos_x] != '1')
 		cub->player.pos_y += cub->player.dir_y * SPEED;
-	}
-	if (cub->map.rmap[pos_y][pos_x + dir_x * speed] != '1')
-	{
-		printf("ff\n");
+	if (cub->map.rmap[(int)cub->player.pos_y]
+		[(int)(cub->player.pos_x + cub->player.dir_x * SPEED)] != '1')
 		cub->player.pos_x += cub->player.dir_x * SPEED;
-	}
-	/*else if (cub->map.rmap[pos_y][pos_x + dir_x * speed] == '1')
-	{
-		cub->player.pos_x += cub->player.dir_x * SPEED;
-		return ;
-	}
-	else if (cub->map.rmap[pos_y + dir_y * speed][pos_x] == '1')
-	{
-		cub->player.pos_y += cub->player.dir_y * SPEED;
-		return ;
-	}*/
-	
 }
