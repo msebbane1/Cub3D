@@ -1,0 +1,27 @@
+/* XPM */
+static char *stone1670428989[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 5 1 ",
+"  c gray56",
+". c #808080",
+"X c gray50",
+"o c #747474",
+"O c #686868",
+/* pixels */
+"XooooX  O XooooX",
+"XX    ooo   OXXo",
+"XOooOooo oXXX XX",
+"X XXXOX XXoooooX",
+"X  ooooooo     O",
+"ooXXXoooXOXXooOX",
+"  X.Xo  XXXX   O",
+"XXXooooooOooooXX",
+"X  O oXXX       ",
+"XooooooXOXXooo X",
+"XX oo  oOo   XXX",
+"OXXXoXXX  XXX  O",
+"Xooooooo  oooooX",
+"X     XoooOoXX  ",
+"XXXoooooXX  XooX",
+"ooooO  XXXXoooXX"
+};

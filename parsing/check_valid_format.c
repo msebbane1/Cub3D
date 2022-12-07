@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 14:44:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:17:15 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_path_texture(t_cub *cub)
 	i = 0;
 	while (i < 4)
 	{
-		if (cub->map.wall[i].img == NULL)
+		if (cub->map.texture[i].img == NULL)
 		{
 			i++;
 			return (1);
@@ -50,7 +50,6 @@ int	parse_color(t_cub *cub, char **map_split)
 {
 	if (!ft_strcmp(map_split[0], "C"))
 	{
-		printf(" spli = %s\n",map_split[1]);
 		check_colors(cub, map_split[1], 'C');
 		cub->map.c++;
 	}
@@ -69,25 +68,25 @@ int	parse_texture(t_cub *cub, char **map_split)
 	if (!ft_strcmp(map_split[0], "NO"))
 	{
 		check_texture_path(map_split[1]);
-		//cub->map.wall[0] = init_img(cub->mlx, map_split[1]);
+		cub->map.path_no = map_split[1];
 		cub->map.no++;
 	}
 	else if (!ft_strcmp(map_split[0], "SO"))
 	{
 		check_texture_path(map_split[1]);
-		//cub->map.wall[1] = init_img(cub->mlx, map_split[1]);
+		cub->map.path_so = map_split[1];
 		cub->map.so++;
 	}
 	else if (!ft_strcmp(map_split[0], "WE"))
 	{
 		check_texture_path(map_split[1]);
-		//cub->map.wall[2] = init_img(cub->mlx, map_split[1]);
+		cub->map.path_we = map_split[1];
 		cub->map.we++;
 	}
 	else if (!ft_strcmp(map_split[0], "EA"))
 	{
 		check_texture_path(map_split[1]);
-		//cub->map.wall[3] = init_img(cub->mlx, map_split[1]);
+		cub->map.path_ea = map_split[1];
 		cub->map.ea++;
 	}
 	else

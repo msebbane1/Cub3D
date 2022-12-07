@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 18:52:46 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:06:36 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ void	check_texture_path(char	*path);
 int		ft_skip_format(char *line);
 int		ft_char_texture(char *line);
 int		create_trgb(int t, int r, int g, int b);
-//**********************************REMPLACE******************************//
+//**********************************REMPLACE MAP******************************//
 void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//
-t_img	init_img(void	*mlx, char *path);
+t_texture	init_img(void	*mlx, char *texture_path);
+void		open_textures(t_cub *cub);
 //***********************************DRAW***************************//
 void	draw_color_backgound(t_cub *cub);
 //**********************************GAME*****************************//

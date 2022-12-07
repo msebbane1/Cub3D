@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 18:51:11 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:08:21 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	key_hook(int keycode, t_cub *cub)
 		rotate_left(cub);
 	if (keycode == ESC)
 		win_closed(cub);
-	printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
+	//printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
 	return (0);
 }
 
@@ -52,6 +52,7 @@ void	game_hook(t_cub *cub)
 {	
 	int	x;
 
+	open_textures(cub);
 	cub->img.img = mlx_new_image(cub->mlx, SCREEN_W, SCREEN_H);
 	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &x);

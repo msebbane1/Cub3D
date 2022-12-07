@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:59:53 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:22:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define SCREEN_H 480
 # define D_W 640.0
 # define D_H 480.0
-# define TEX_W 64
-# define TEX_H 64
 # define MAP_L 24
 # define MAP_H 24
 # define W 13
@@ -53,11 +51,13 @@ typedef struct s_ray
 	int		side;
 	double	wallx;
 	int		nb;
-	int		h;
+	int		line_h;
 	double	ratio;
 	double	camera;
 	double	rdisdx;
 	double	rdisdy;
+	int		texture_x;
+	int		texture_y;
 }	t_ray;
 
 typedef struct s_player
@@ -87,6 +87,17 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
+typedef struct s_texture {
+	void	*img;
+	int		*addr;
+	void	*ptr;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_texture;
+
 typedef struct s_map {
 	char		**str;
 	char		**rmap;
@@ -98,11 +109,15 @@ typedef struct s_map {
 	int			ea;
 	int			c;
 	int			f;
+	char		*path_no;
+	char		*path_so;
+	char		*path_we;
+	char		*path_ea;
 	int			color_floor;
 	int			color_sky;
 	int			sky[3];
 	int			floor[3];
-	t_img		wall[4];
+	t_texture	texture[4];
 	t_coord		size;
 }	t_map;
 

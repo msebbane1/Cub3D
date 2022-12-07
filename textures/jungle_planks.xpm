@@ -1,0 +1,30 @@
+/* XPM */
+static char *jungle_planks1670428989[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 8 1 ",
+"  c #B88764",
+". c #B1805C",
+"X c #9F714A",
+"o c #8E6442",
+"O c #7B543A",
+"+ c #725035",
+"@ c #68462F",
+"# c #4B3221",
+/* pixels */
+" XXXX  .X      o",
+"  .+..XXXXX.X. o",
+"  XXXX..+  .   o",
+"@@@+++++++@@@@++",
+" XXXX  o XX+... ",
+"XX+... o....XXXX",
+"   .   oXX+     ",
+"++@@@@@+++@@@@++",
+"     +X  ...   o",
+"XXXXX ..XXX+ XXo",
+" ...  XXXX.....o",
+"+@++@@@+++++@@@+",
+"     X oX+XX.   ",
+".X+    o ..XXXX.",
+"  XXX  o  X.    ",
+"+++O@@O@+++@#@@+"
+};

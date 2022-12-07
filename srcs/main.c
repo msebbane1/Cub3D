@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 15:33:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:08:49 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	init_parse(t_cub *cub)
 	cub->map.f = 0;
 	cub->map.index_spaces = 0;
 	cub->player.nb_player = 0;
-	cub->map.wall[0].img = NULL;
-	cub->map.wall[1].img = NULL;
-	cub->map.wall[2].img = NULL;
-	cub->map.wall[3].img = NULL;
+	cub->map.texture[0].img = NULL;
+	cub->map.texture[1].img = NULL;
+	cub->map.texture[2].img = NULL;
+	cub->map.texture[3].img = NULL;
 	cub->map.sky[0] = -1;
 	cub->map.floor[0] = -1;
 	cub->rays.ratio = (D_W / D_H) / (4.0 / 3.0);

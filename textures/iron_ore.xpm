@@ -1,0 +1,30 @@
+/* XPM */
+static char *iron_ore1670428989[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 8 1 ",
+"  c #686868",
+". c #747474",
+"X c gray50",
+"o c gray56",
+"O c #AF8E77",
+"+ c #BC9980",
+"@ c #D8AF93",
+"# c #E2C0AA",
+/* pixels */
+"X....Xoo oX....X",
+"XXoooooo.ooo XX.",
+"X ..+...o.XX@+XX",
+"XoXXX X@OX.....X",
+"Xoo.......ooooo ",
+"..XXX#@.X #@.. X",
+"ooX#@++OXX+Oooo ",
+"XXX...... ....XX",
+"X@+ o.XX#@oooooo",
+"X......@OOO...oX",
+"XXo.+oo. .oooXXX",
+" XXX.XXXooX@Ooo ",
+"X.......@#@++O.X",
+"Xo.@OXX..OO.XXoo",
+"XXX.....XXooX..X",
+".... ooXXXX...XX"
+};

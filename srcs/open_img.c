@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:04:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 13:15:20 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:09:20 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,21 @@ void	check_texture_path(char	*path)
 		error_msg("Error\nInvalid texture(.xpm)");
 }
 
-t_img	init_img(void	*mlx, char *path)
+t_texture	init_img(void	*mlx, char *path)
 {
-	t_img	img;
+	t_texture	img;
+	int			x;
 
-	//check_texture_path(path); //A remettre avec les vrai texture
 	img.img = mlx_xpm_file_to_image(mlx, path, &img.width, &img.height);
+	img.addr = (int *) mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &x);
 	return (img);
-	/*img.img = mlx_xpm_file_to_image(mlx, path, &img.width, &img.height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-		&img.line_length, &img.endian);
-	return (img);*/
-	/*
-	else
-	{
-		img.img = NULL;
-		img.addr = NULL;
-		return (img);
-	}*/
+}
+
+void	open_textures(t_cub *cub)
+{
+	cub->map.texture[0] = init_img(cub->mlx, cub->map.path_no);
+	cub->map.texture[1] = init_img(cub->mlx, cub->map.path_so);
+	cub->map.texture[2] = init_img(cub->mlx, cub->map.path_we);
+	cub->map.texture[3] = init_img(cub->mlx, cub->map.path_ea);
 }
