@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_format.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/07 15:17:15 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:40:10 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,22 +108,58 @@ int	check_parse_format(t_cub *cub, char **map_split)
 	return (1);
 }
 
+char	*ft_strjoin2(char *s1, char *s2)
+{
+	char	*s3;
+	size_t	i;
+	size_t	len1;
+	size_t	len2;
+
+	i = -1;
+	if (!s1 || !s2)
+		return (0);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!(s3 = malloc(len1 + len2 + 1)))
+		return (0);
+	else
+	{
+		while (s1[++i] != '\0')
+			s3[i] = s1[i];
+		i = -1;
+		while (s2[++i] != '\0')
+			s3[len1 + i] = s2[i];
+	}
+	s3[len1 + len2] = '\0';
+	return (s3);
+}
+
 void	check_valid_format(t_cub *cub)
 {
 	int		i;
 	char	**map_split;
 	int		y;
+	int		t;
 
 	i = 0;
 	y = 0;
+	t = 2;
 	while (cub->map.str[i])
 	{
-		map_split = ft_split2(cub->map.str[i], ' ');
+		map_split = ft_split(cub->map.str[i], ' ');
 		y = 0;
 		while (map_split[y])
 		{
 			map_split[y] = ft_strtrim(map_split[y], "\t");
 			y++;
+		}
+		if (!ft_strcmp(map_split[0], "F") || !ft_strcmp(map_split[0], "C"))
+		{
+			while (map_split[t])
+			{
+				map_split[1] = ft_strjoin2(map_split[1], map_split[t]);
+				t++;
+			}
 		}
 		if (check_parse_format(cub, map_split))
 			cub->map.index++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 13:14:20 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:16:03 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	ft_check_spac(char *line)
 void	ft_convert_rgb_floor(t_cub *cub, char **map_split)
 {
 	cub->map.floor[0] = ft_atoi(map_split[0]);
+	printf("LALA ==== %d", cub->map.floor[0]);
 	cub->map.floor[1] = ft_atoi(map_split[1]);
+	printf("LALA ==== %d", cub->map.floor[1]);
 	cub->map.floor[2] = ft_atoi(map_split[2]);
+	printf("LALA ==== %d", cub->map.floor[2]);
 }
 
 void	ft_convert_rgb_sky(t_cub *cub, char **map_split)
