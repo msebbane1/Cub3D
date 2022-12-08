@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:53:28 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 17:30:56 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:02:33 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_hit(t_cub *cub)
 	{
 		cub->rays.side_x += cub->rays.delta_x;
 		cub->rays.map_x += cub->rays.step_x;
-		if (cub->rays.step_y == -1)
+		if (cub->rays.step_x == -1)
 			cub->rays.side = 0;
 		else
 			cub->rays.side = 1;

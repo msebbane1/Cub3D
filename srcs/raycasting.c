@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:32:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/07 17:35:31 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:02:25 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ void	calculate_texture(t_cub	*cub)
 	wall_x -= floor((wall_x));
 	cub->rays.texture_x = (int)(wall_x
 			*(double)(cub->map.texture[cub->rays.side].width));
-	if (cub->rays.side <= 1 && cub->rays.dir_x > 0)
-		cub->rays.texture_x = cub->map.texture[cub->rays.side].width
-			- cub->rays.texture_x - 1;
-	if (cub->rays.side > 1 && cub->rays.dir_y < 0)
-		cub->rays.texture_x = cub->map.texture[cub->rays.side].width
-			- cub->rays.texture_x - 1;
 }
 
 void	draw_walls(t_cub *cub, int start_draw, int end_draw)
