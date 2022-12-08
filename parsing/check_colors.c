@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 11:24:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:30:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,29 @@ int	check_virgule(char *str)
 	return (0);
 }
 
+void	ft_convert_rgb(char c, t_cub *cub, char **map_split)
+{
+	if (c == 'F')
+	{
+		ft_convert_rgb_floor(cub, map_split);
+		cub->map.color_floor = create_trgb(0, cub->map.floor[0],
+				cub->map.floor[1], cub->map.floor[2]);
+	}
+	if (c == 'C')
+	{
+		ft_convert_rgb_sky(cub, map_split);
+		cub->map.color_sky = create_trgb(0, cub->map.sky[0],
+				cub->map.sky[1], cub->map.sky[2]);
+	}
+}
+
 void	check_colors(t_cub *cub, char *str, char c)
 {
 	char	**map_split;
 	int		i;
 	int		rgb;
-	int		y;
 
 	i = 0;
-	rgb = 0;
-	y = 0;
-	printf("CHECK_COLORS\n");
 	if (!str)
 		error_msg("Error\ninvalid RGB");
 	if (check_virgule(str))
@@ -97,23 +109,14 @@ void	check_colors(t_cub *cub, char *str, char c)
 	map_split = ft_split(str, ',');
 	while (map_split[i])
 	{
+		printf("LALA22 ==== %s\n", map_split[i]);
 		rgb = ft_atoi(map_split[i]);
+		printf("LALA ==== %d\n", rgb);
 		if ((rgb < 0 || rgb > 255) || !ft_strcmp(str, "-"))
 			error_msg("Error\ninvalid RGB: colors between 0 and 255");
 		i++;
 	}
 	if (i != 3)
 		error_msg("Error\ninvalid RBG: You must have 3 colors");
-	if (c == 'F')
-	{
-		ft_convert_rgb_floor(cub, map_split);
-		cub->map.color_floor = create_trgb(0, cub->map.floor[0], cub->map.floor[1],
-				cub->map.floor[2]);
-	}
-	if (c == 'C')
-	{
-		ft_convert_rgb_sky(cub, map_split);
-		cub->map.color_sky = create_trgb(0, cub->map.sky[0], cub->map.sky[1],
-				cub->map.sky[2]);
-	}
+	ft_convert_rgb(c, cub, map_split);
 }

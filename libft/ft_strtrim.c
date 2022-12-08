@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 17:11:16 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/09 10:28:25 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:23:56 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ char	*ft_strtrim(char *s1, char *set)
 		return (0);
 	while (s1[i] && ft_is_set(s1[i], set))
 		i++;
+	if (i == (ft_strlen(s1)))
+		return (NULL);
 	while (ft_is_set(s1[size - 1], set) && size >= 0)
 	{
 		size--;

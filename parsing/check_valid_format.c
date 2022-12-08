@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 15:59:22 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:16:17 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,13 @@ int	parse_texture(t_cub *cub, char **map_split)
 
 	y = 0;
 	//printf("spli2 = %s\n", map_split[2]);
-	if (!ft_strcmp(map_split[0], "SO"))
+	if (!ft_strcmp(map_split[0], "SO") || !ft_strcmp(map_split[0], "NO") || !ft_strcmp(map_split[0], "EA") || !ft_strcmp(map_split[0], "WE"))
 	{
 		while (map_split[y])
 		{
 			map_split[y] = ft_strtrim(map_split[y], "\t");
+			if (y == 2)
+				return (0);
 			y++;
 		}
 	}
