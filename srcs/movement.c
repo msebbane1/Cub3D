@@ -78,6 +78,7 @@ void	move_right(t_cub *cub)
 
 void	move_left(t_cub *cub)
 {
+	printf("cub->player.plane_y = %f cub->player.plane_x = %f\n", cub->player.plane_y, cub->player.plane_x);
 	if (cub->map.rmap[(int)(cub->player.pos_y - cub->player.plane_y * SPEED)]
 		[(int)cub->player.pos_x] != '1')
 		cub->player.pos_y -= cub->player.plane_y * SPEED;

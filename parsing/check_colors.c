@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/07 18:16:03 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/08 11:24:13 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ int	ft_check_spac(char *line)
 void	ft_convert_rgb_floor(t_cub *cub, char **map_split)
 {
 	cub->map.floor[0] = ft_atoi(map_split[0]);
-	printf("LALA ==== %d", cub->map.floor[0]);
 	cub->map.floor[1] = ft_atoi(map_split[1]);
-	printf("LALA ==== %d", cub->map.floor[1]);
 	cub->map.floor[2] = ft_atoi(map_split[2]);
-	printf("LALA ==== %d", cub->map.floor[2]);
 }
 
 void	ft_convert_rgb_sky(t_cub *cub, char **map_split)
@@ -90,7 +87,7 @@ void	check_colors(t_cub *cub, char *str, char c)
 	i = 0;
 	rgb = 0;
 	y = 0;
-	printf("str = %s\n", str);
+	printf("CHECK_COLORS\n");
 	if (!str)
 		error_msg("Error\ninvalid RGB");
 	if (check_virgule(str))
@@ -101,7 +98,6 @@ void	check_colors(t_cub *cub, char *str, char c)
 	while (map_split[i])
 	{
 		rgb = ft_atoi(map_split[i]);
-		printf("rgb = %d\n", rgb);
 		if ((rgb < 0 || rgb > 255) || !ft_strcmp(str, "-"))
 			error_msg("Error\ninvalid RGB: colors between 0 and 255");
 		i++;

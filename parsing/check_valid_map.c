@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 13:47:56 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:57:15 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,17 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	{
 		if (l == cub->map.size.y)
 			return (1);
+		//printf("c = %d\n", c);
+		//printf("size = %d\n", size_l2);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
+		{
 			return (1);
+		}
 		if (cub->map.str[l + 1] != NULL)
 		{
 			if (ft_strlen(cub->map.str[l + 1]) < c
-				|| cub->map.str[l + 1][c] == ' '
-					|| cub->map.str[l + 1][c] == '\0')
+				|| cub->map.str[l + 1][c] == '\0')
 				return (1);
 		}
 		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\0')
@@ -177,6 +180,8 @@ void	check_valid_map(t_cub *cub)
 		c = 0;
 		while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
 		{
+			//while (cub->map.str[l][c] == '\t')
+				//c++;
 			if (check_char(cub->map.str[l][c]))
 				error_msg("Error\nInvalid characters in your map");
 			if (check_player_pos(cub, cub->map.str[l][c]))

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/07 14:06:36 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:56:35 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ int		check_walls_first_line_char(t_cub *cub);
 void	check_colors(t_cub *cub, char *str, char c);
 int		ft_atoi(char *nptr);
 int		check_params(char **str);
-void	check_texture_path(char	*path);
+void	check_texture_path(char	*path, int *error);
 int		ft_skip_format(char *line);
 int		ft_char_texture(char *line);
 int		create_trgb(int t, int r, int g, int b);
+char	*ft_strjoin_2(char *s1, char *s2);
+int		ft_check_letters(char *line);
 //**********************************REMPLACE MAP******************************//
 void	remplace(t_cub *cub);
 //**********************************TEXTURES*****************************//

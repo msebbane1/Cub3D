@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:32:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/07 18:02:25 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:38:42 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ void	draw_walls(t_cub *cub, int start_draw, int end_draw)
 	}
 }
 
+void	calculate_start_end(t_cub *cub, int *start_draw, int *end_draw)
+{
+	cub->rays.line_h = (int)((D_H * cub->rays.ratio) / cub->rays.dist);
+		*start_draw = (-cub->rays.line_h / 2 + SCREEN_H / 2);
+	if (*start_draw < 0)
+		*start_draw = 0;
+	*end_draw = (cub->rays.line_h / 2 + SCREEN_H / 2);
+	if (*end_draw >= SCREEN_H)
+		*end_draw = SCREEN_H - 1;
+}
+
 double	calculate_camera(t_cub *cub)
 {
 	return (2 * cub->rays.nb / D_W - 1);
@@ -72,13 +83,7 @@ void	ft_raycasting(t_cub *cub)
 				cub->rays.hit = 1;
 		}
 		init_ray_dist(cub);
-		cub->rays.line_h = (int)((D_H * cub->rays.ratio) / cub->rays.dist);
-		start_draw = (-cub->rays.line_h / 2 + SCREEN_H / 2);
-		if (start_draw < 0)
-			start_draw = 0;
-		end_draw = (cub->rays.line_h / 2 + SCREEN_H / 2);
-		if (end_draw >= SCREEN_H)
-			end_draw = SCREEN_H - 1;
+		calculate_start_end(cub, &start_draw, &end_draw);
 		calculate_texture(cub);
 		draw_walls(cub, start_draw, end_draw);
 		cub->rays.nb++;

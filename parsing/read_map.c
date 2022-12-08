@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/29 12:14:27 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/08 11:25:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	copy_map(char **argv, t_cub *cub)
 	{
 		cub->map.str[i] = ft_strdup(line);
 		free(line);
-		printf("LOLO ==== %s\n", cub->map.str[i]);
 		i++;
 	}
 	cub->map.str[i++] = ft_strdup(line);
