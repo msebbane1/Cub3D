@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 14:56:35 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:58:15 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,15 @@ void	game_hook(t_cub *cub);
 void	position_player(t_cub *cub);
 void	move_forward(t_cub *cub);
 void	move_right(t_cub *cub);
+void    mousse_right(t_cub *cub);
+void    mousse_left(t_cub *cub);
 void	move_left(t_cub *cub);
 void	move_backwards(t_cub *cub);
 void	rotate_right(t_cub *cub);
 void	rotate_left(t_cub *cub);
 //**********************************RAY_CASTING****************************//
+//int     mlx_mouse_hide();
+//int     mlx_mouse_move(void *win_ptr, int x, int y);
 void	ft_raycasting(t_cub *cub);
 void	init_ray(t_cub *cub);
 void	init_hit(t_cub *cub);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/07 14:08:21 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:58:13 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ int	raycast_loop(t_cub *cub)
 	return (1);
 }
 
+int	ft_mousse(int x, int y, t_cub *cub)
+{
+	(void)y;
+	//mlx_mouse_hide();
+	if (x < SCREEN_W / 2)
+		mousse_left(cub);
+	if (x > SCREEN_W / 2)
+		mousse_right(cub);
+	//mlx_mouse_move(cub->win, SCREEN_W / 2, SCREEN_H / 2);
+	return (1);
+}
+
 void	game_hook(t_cub *cub)
 {	
 	int	x;
@@ -58,6 +70,7 @@ void	game_hook(t_cub *cub)
 			&cub->img.line_length, &x);
 	mlx_hook(cub->win, 2, 0, key_hook, cub);
 	mlx_hook(cub->win, 17, 1L << 0, win_closed, cub);
+	//mlx_hook(cub->win, 6, 0, ft_mousse, cub);
 	mlx_loop_hook(cub->mlx, raycast_loop, cub);
 	mlx_loop(cub->mlx);
 }
