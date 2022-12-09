@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/08 18:01:28 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:13:00 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*ft_strdupp(const char *s1)
 
 void	remplace(t_cub *cub)
 {
-	char	*lolo;
 	int		i;
 	int		w;
 	int		t;
@@ -62,39 +61,23 @@ void	remplace(t_cub *cub)
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
-	cub->map.rmap[t] = NULL;
-	lolo = malloc(sizeof(char) * (cub->map.size.x));
-	t = 0;
-	while (cub->map.rmap[t])
-	{
-		lolo[i] = '\0';
-		cub->map.rmap[t] = ft_strdupp(lolo);
-		t++;
-	}
 	t = 0;
 	y = cub->map.index_spaces;
-	while (cub->map.rmap[t])
+	while (cub->map.str[y])
 	{
 		w = 0;
 		while (cub->map.str[y][w])
+			w++;
+		cub->map.rmap[t] = malloc(sizeof(char) * w + 1);
+		w = 0;	
+		while (cub->map.str[y][w])
 		{
 			cub->map.rmap[t][w] = cub->map.str[y][w];
-			if (cub->map.rmap[t][w] == ' ' || cub->map.rmap[t][w] == '\0'
-				|| cub->map.rmap[t][w] == '\n')
-				cub->map.rmap[t][w] = '1';
 			w++;
 		}
-		if (w < i)
-		{
-			while (w < i)
-			{
-				cub->map.rmap[t][w] = '1';
-				w++;
-			}
-		}
-		printf("%s\n", cub->map.rmap[t]);
-		t++;
+		cub->map.rmap[t][w] = '\0';
 		y++;
+		t++;
 	}
-	free(lolo);
+	cub->map.rmap[t] = NULL;
 }

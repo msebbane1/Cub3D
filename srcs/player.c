@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:53 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/06 16:35:46 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:12:14 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	position_player(t_cub *cub)
 		c = 0;
 		while (cub->map.rmap[l][c])
 		{
+			printf("LALA === %d\n", c);
 			if (cub->map.rmap[l][c] == 'N' || cub->map.rmap[l][c] == 'S'
 				|| cub->map.rmap[l][c] == 'W' || cub->map.rmap[l][c] == 'E')
 			{

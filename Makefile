@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
+#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/12/06 14:52:40 by msebbane         ###   ########.fr        #
+#    Updated: 2022/12/09 16:14:06 by lbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 
 OBJECTS	= ./bin
  
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
 
