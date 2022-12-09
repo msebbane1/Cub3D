@@ -1,6 +1,8 @@
-	SO     ./textures/gold_ore.xpm
+SO    ./textures/gold_ore.xpm
+WE     ./textures/colorstone.xpm
+EA     ./textures/diamond.xpm
 		F 216,	181,  134
-NO ./textures/stone_bricks.xpm			  
+NO ./textures/emerald_ore.xpm			  
 C 148,216,252
 
 

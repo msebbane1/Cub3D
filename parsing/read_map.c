@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 16:58:26 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:21:09 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	copy_map(char **argv, t_cub *cub)
 		i++;
 	}
 	cub->map.str[i++] = ft_strdup(line);
-	cub->map.str[i] = NULL;
 	free(line);
+	cub->map.str[i] = NULL;
 	close(fd);
 }
 

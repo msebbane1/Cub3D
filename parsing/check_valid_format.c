@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 18:10:47 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 19:29:46y lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ int	check_new_index(t_cub *cub)
 int	parse_color(t_cub *cub, char **map_split)
 {
 	int	t;
+	char	*temp;
 
 	t = 2;
 	if (!ft_strcmp(map_split[0], "F") || !ft_strcmp(map_split[0], "C"))
 	{
 		while (map_split[t])
 		{
-			map_split[1] = ft_strjoin_2(map_split[1], map_split[t]);
+			temp = map_split[1];
+			map_split[1] = ft_strjoin_2(temp, map_split[t]);
 			t++;
+			free (temp);
 		}
 		if (!ft_strcmp(map_split[0], "C"))
 		{
@@ -60,8 +63,9 @@ int	parse_color(t_cub *cub, char **map_split)
 
 int	parse_texture(t_cub *cub, char **map_split)
 {
-	int	y;
-	int	error;
+	int		y;
+	int		error;
+	char	*temp;
 
 	y = 0;
 	if (!ft_strcmp(map_split[0], "SO") || !ft_strcmp(map_split[0], "NO")
@@ -69,10 +73,12 @@ int	parse_texture(t_cub *cub, char **map_split)
 	{
 		while (map_split[y])
 		{
-			map_split[y] = ft_strtrim(map_split[y], "\t");
+			temp = map_split[y];
+			map_split[y] = ft_strtrim(temp, "\t");
 			if (y == 2)
 				return (0);
 			y++;
+			free (temp);
 		}
 		if (!ft_strcmp(map_split[0], "NO"))
 		{
@@ -107,12 +113,15 @@ int	parse_texture(t_cub *cub, char **map_split)
 int	check_parse_format(t_cub *cub, char **map_split)
 {
 	int	y;
+	char	*temp;
 
 	y = 0;
 	while (map_split[y] && cub->map.index < 6)
 	{
+		temp = map_split[y];
 		map_split[y] = ft_strtrim(map_split[y], "\t");
 		y++;
+		free (temp);
 	}
 	if (parse_color(cub, map_split))
 	{
@@ -161,5 +170,4 @@ void	check_valid_format(t_cub *cub)
 * [Optionnel]Creer une erreur si il y a que la map [missing map] check espace ou 1 apres index + 1
 * tab  + espace (apres) avant texture : doit fonctionner
 * fichier qui existe mais qui est vide
-* Espace en plein milieu de la map \n doit afficher erreur
 */
