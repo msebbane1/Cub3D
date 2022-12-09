@@ -139,28 +139,51 @@ int	check_player_pos(t_cub *cub, char c)
 	return (0);
 }
 
+/*int	checkspace(t_cub *cub)
+{
+	int		l;
+	int		c;
+
+	l = cub->map.index_spaces;
+	while (cub->map.str[l])
+	{
+		c = 0;
+		while (cub->map.str[l][c])
+		{
+			if (cub->map.str[l][c] == '\n'
+				|| cub->map.str[l][c] == '\0' || cub->map.str == NULL)
+				return (1);
+			c++;
+		}
+		l++;
+	}
+	return (0);
+}*/
+
 int	check_spaces(t_cub *cub)
 {
 	int		l;
 	int		t;
+	unsigned long		u;
 
 	l = cub->map.index_spaces;
 	t = 0;
+	u = 0;
 	printf("index_spaces = %d\n", l);
 	while (cub->map.str[l] != NULL)
 	{
-		while (cub->map.str[l][0] != '\n' && cub->map.str[l][0] != '\0')
+		while (cub->map.str[l][0] == '\n' && cub->map.str[l][0] == '\0')
 		{
+			printf("hello2\n");
 			if (cub->map.str[l] != NULL)
 				break ;
 			if (t != 0)
 				return (1);
 			l++;
-			/*			while (cub->map.str[l][u] == '\t' || cub->map.str[l][u] == ' ')
+			while (cub->map.str[l][u] == '\t' || cub->map.str[l][u] == ' ')
 				u++;
 			if (u == strlen(cub->map.str[l]))
 				return (1);
-*/
 		}
 		t++;
 		l++;
@@ -183,10 +206,8 @@ void	check_valid_map(t_cub *cub)
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
-		while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
+		while (cub->map.str[l][c])
 		{
-			//while (cub->map.str[l][c] == '\t')
-				//c++;
 			if (check_char(cub->map.str[l][c]))
 				error_msg("Error\nInvalid characters in your map");
 			if (check_player_pos(cub, cub->map.str[l][c]))

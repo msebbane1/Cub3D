@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 17:58:15 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:44:48 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <mlx.h>
 # include "../g/get_next_line.h"
 # include "key_hook.h"
 # include "struct.h"
+# include "../mlx/mlx.h"
 
 int		main(int argc, char **argv);
 
@@ -49,8 +49,10 @@ int		ft_char_texture(char *line);
 int		create_trgb(int t, int r, int g, int b);
 char	*ft_strjoin_2(char *s1, char *s2);
 int		ft_check_letters(char *line);
+void	free_tab(char **str);
 //**********************************REMPLACE MAP******************************//
 void	remplace(t_cub *cub);
+void	remplace2(char **argv, t_cub *cub);
 //**********************************TEXTURES*****************************//
 t_texture	init_img(void	*mlx, char *texture_path);
 void		open_textures(t_cub *cub);
@@ -62,15 +64,13 @@ void	game_hook(t_cub *cub);
 void	position_player(t_cub *cub);
 void	move_forward(t_cub *cub);
 void	move_right(t_cub *cub);
-void    mousse_right(t_cub *cub);
-void    mousse_left(t_cub *cub);
+void    mouse_right(t_cub *cub);
+void    mouse_left(t_cub *cub);
 void	move_left(t_cub *cub);
 void	move_backwards(t_cub *cub);
 void	rotate_right(t_cub *cub);
 void	rotate_left(t_cub *cub);
 //**********************************RAY_CASTING****************************//
-//int     mlx_mouse_hide();
-//int     mlx_mouse_move(void *win_ptr, int x, int y);
 void	ft_raycasting(t_cub *cub);
 void	init_ray(t_cub *cub);
 void	init_hit(t_cub *cub);

@@ -86,22 +86,36 @@ void	move_left(t_cub *cub)
 		cub->player.pos_x -= cub->player.plane_x * SPEED;
 }
 
-void    mousse_left(t_cub *cub)
+void    mouse_left(t_cub *cub)
 {
-	if (cub->map.rmap[(int)(cub->player.pos_y - cub->player.plane_y * SPEED)]
-		[(int)cub->player.pos_x] != '1')
-		cub->player.pos_y -= cub->player.plane_y * SPEED;
-	if (cub->map.rmap[(int)cub->player.pos_y]
-		[(int)(cub->player.pos_x - cub->player.plane_x * SPEED)] != '1')
-		cub->player.pos_x -= cub->player.plane_x * SPEED;
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = cub->player.dir_x;
+	old_plane_x = cub->player.plane_x;
+	cub->player.dir_x = cub->player.dir_x * cos(-R_SPEED)
+		- cub->player.dir_y * sin(-R_SPEED);
+	cub->player.dir_y = old_dir_x * sin(-R_SPEED)
+		+ cub->player.dir_y * cos(-R_SPEED);
+	cub->player.plane_x = cub->player.plane_x * cos(-R_SPEED)
+		- cub->player.plane_y * sin(-R_SPEED);
+	cub->player.plane_y = old_plane_x * sin(-R_SPEED)
+		+ cub->player.plane_y * cos(-R_SPEED);
 }
 
-void	mousse_right(t_cub *cub)
+void	mouse_right(t_cub *cub)
 {
-	if (cub->map.rmap[(int)(cub->player.pos_y + cub->player.plane_y * SPEED)]
-		[(int)cub->player.pos_x] != '1')
-		cub->player.pos_y += cub->player.plane_y * SPEED;
-	if (cub->map.rmap[(int)cub->player.pos_y]
-		[(int)(cub->player.pos_x + cub->player.plane_x * SPEED)] != '1')
-		cub->player.pos_x += cub->player.plane_x * SPEED;
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = cub->player.dir_x;
+	old_plane_x = cub->player.plane_x;
+	cub->player.dir_x = cub->player.dir_x * cos(R_SPEED)
+		- cub->player.dir_y * sin(R_SPEED);
+	cub->player.dir_y = old_dir_x * sin(R_SPEED)
+		+ cub->player.dir_y * cos(R_SPEED);
+	cub->player.plane_x = cub->player.plane_x * cos(R_SPEED)
+		- cub->player.plane_y * sin(R_SPEED);
+	cub->player.plane_y = old_plane_x * sin(R_SPEED)
+		+ cub->player.plane_y * cos(R_SPEED);
 }

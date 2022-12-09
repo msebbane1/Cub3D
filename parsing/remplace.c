@@ -6,35 +6,11 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/09 16:13:00 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:19:07 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-char	*ft_strdupp(const char *s1)
-{
-	void	*str;
-	char	*a;
-	size_t	i;
-
-	str = 0;
-	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	str = malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	a = (char *)str;
-	while (s1[i] != '\0')
-	{
-		a[i] = s1[i];
-		i++;
-	}
-	a[i] = '\0';
-	return (a);
-}
 
 void	remplace(t_cub *cub)
 {
@@ -60,6 +36,7 @@ void	remplace(t_cub *cub)
 	w = 0;
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
+	printf("y = %d\n", cub->map.size.y);
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
 	t = 0;
 	y = cub->map.index_spaces;

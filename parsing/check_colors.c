@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 16:30:01 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 11:29:14 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ int	ft_check_letters(char *line)
 			return (1);
 		i++;
 	}
-	return (0);
-}
-
-int	ft_check_spac(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] == '\t' || line[i] == ' ')
-		i++;
-	if (line[i] != '\0')
-		return (1);
 	return (0);
 }
 
@@ -109,9 +97,7 @@ void	check_colors(t_cub *cub, char *str, char c)
 	map_split = ft_split(str, ',');
 	while (map_split[i])
 	{
-		printf("LALA22 ==== %s\n", map_split[i]);
 		rgb = ft_atoi(map_split[i]);
-		printf("LALA ==== %d\n", rgb);
 		if ((rgb < 0 || rgb > 255) || !ft_strcmp(str, "-"))
 			error_msg("Error\ninvalid RGB: colors between 0 and 255");
 		i++;

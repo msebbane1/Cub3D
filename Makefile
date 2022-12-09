@@ -6,7 +6,7 @@
 #    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/12/09 16:14:06 by lbally           ###   ########.fr        #
+#    Updated: 2022/12/09 16:18:36 by lbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJECTS	= ./bin
  
 CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
-FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
+CLINK= -framework OpenGL -framework AppKit
 
 SRCS = g/get_next_line_utils.c g/get_next_line.c\
 	   srcs/main.c libft/libft.c parsing/error_msg.c libft/ft_split.c parsing/check_valid_format.c\
@@ -48,7 +48,7 @@ bonus:
 
 ${NAME}: ${OBJS}
 		@echo "\033[1;36m""Compilation de ${NAME}..."
-		$(CC) $(OBJS) $(FLAGSMLX) $(CFLAGS) -o $(NAME)
+		$(CC) $(OBJS) $(CFLAGS) $(CLINK) libmlx.a -lncurses -o $(NAME)
 
 ${OBJECTS}/%.o: ${SOURCES}/%.c
 	@echo "Compilation de ${notdir $<}."
