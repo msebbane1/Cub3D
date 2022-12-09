@@ -6,7 +6,7 @@ SO   ./textures/gold_ore.xpm
 	F 216,181,134
 NO      ./textures/stone_bricks.xpm
 C 148,     216,252
-WE 	./textures/dirt.xpm
+WE 	./textures/nether.xpm
 EA ./textures/diamond.xpm
 
 		11111111111111111111111111
