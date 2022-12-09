@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_format.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:20:39 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 11:42:10 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:28:43 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	check_parse_format(t_cub *cub, char **map_split)
 		return (1);
 	else
 	{
-		//free_tab(map_split);
+		free_tab(map_split);
 		return (0);
 	}
 	return (1);
@@ -154,5 +154,4 @@ void	check_valid_format(t_cub *cub)
 * tab  + espace (apres) avant texture : doit fonctionner
 * fichier qui existe mais qui est vide
 * Espace en plein milieu de la map \n doit afficher erreur
-* /quand tu fais entrer et rajoute des 1 probleme/
 */

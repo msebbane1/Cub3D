@@ -22,7 +22,6 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	{
 		if (l == cub->map.size.y)
 			return (1);
-		printf("hello\n");
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
@@ -50,8 +49,6 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 	{
 		if (l == cub->map.size.y)
 			return (1);
-		//printf("c = %d\n", c);
-		//printf("size = %d\n", size_l2);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 		{
@@ -139,53 +136,37 @@ int	check_player_pos(t_cub *cub, char c)
 	return (0);
 }
 
-/*int	checkspace(t_cub *cub)
-{
-	int		l;
-	int		c;
-
-	l = cub->map.index_spaces;
-	while (cub->map.str[l])
-	{
-		c = 0;
-		while (cub->map.str[l][c])
-		{
-			if (cub->map.str[l][c] == '\n'
-				|| cub->map.str[l][c] == '\0' || cub->map.str == NULL)
-				return (1);
-			c++;
-		}
-		l++;
-	}
-	return (0);
-}*/
 
 int	check_spaces(t_cub *cub)
 {
-	int		l;
-	int		t;
-	unsigned long		u;
+	int	l;
+	int	t;
+	int	g;
+	int	u;
 
 	l = cub->map.index_spaces;
 	t = 0;
 	u = 0;
-	printf("index_spaces = %d\n", l);
+	g = 0;
 	while (cub->map.str[l] != NULL)
 	{
-		while (cub->map.str[l][0] == '\n' && cub->map.str[l][0] == '\0')
+		g = 0;
+		u = 0;
+		while (cub->map.str[l][u])
 		{
-			printf("hello2\n");
-			if (cub->map.str[l] != NULL)
+			if (t != 0 && u == 0 && (cub->map.str[l][u] != '\n' || cub->map.str[l][u] != '\0'))
+				return (1);
+			if (cub->map.str[l][0] == '\n' || cub->map.str[l][0] == '\0')
+			{
+				t++;
 				break ;
-			if (t != 0)
-				return (1);
-			l++;
-			while (cub->map.str[l][u] == '\t' || cub->map.str[l][u] == ' ')
-				u++;
-			if (u == strlen(cub->map.str[l]))
-				return (1);
+			}
+			if (cub->map.str[l][u] != '0' && cub->map.str[l][u] != '1')
+				g++;
+			u++;
 		}
-		t++;
+		if (u == g && u != 0 && t != 0)
+			return (1);
 		l++;
 	}
 	return (0);
