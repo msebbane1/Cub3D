@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:32:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/08 14:38:42 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:14:42 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ double	calculate_camera(t_cub *cub)
 void	ft_raycasting(t_cub *cub)
 {
 	int		start_draw;
+
 	int		end_draw;
 
 	cub->rays.nb = 0;
@@ -80,7 +81,7 @@ void	ft_raycasting(t_cub *cub)
 		{
 			init_hit(cub);
 			if (cub->map.rmap[cub->rays.map_y][cub->rays.map_x] == '1')
-				cub->rays.hit = 1;
+					cub->rays.hit = 1;
 		}
 		init_ray_dist(cub);
 		calculate_start_end(cub, &start_draw, &end_draw);

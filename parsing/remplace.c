@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remplace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/08 18:01:28 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:41:06 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	remplace(t_cub *cub)
 	w = 0;
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
+	printf("y = %d\n", cub->map.size.y);
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
 	cub->map.rmap[t] = NULL;
 	lolo = malloc(sizeof(char) * (cub->map.size.x));
 	t = 0;
-	while (cub->map.rmap[t])
+	while (cub->map.rmap[t] || t == 0)
 	{
+		printf("passe\n");
 		lolo[i] = '\0';
 		cub->map.rmap[t] = ft_strdupp(lolo);
 		t++;
