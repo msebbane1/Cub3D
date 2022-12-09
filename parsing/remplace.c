@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remplace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/09 16:19:07 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:31:30 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	remplace(t_cub *cub)
 	w = 0;
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
-	printf("y = %d\n", cub->map.size.y);
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
 	t = 0;
 	y = cub->map.index_spaces;

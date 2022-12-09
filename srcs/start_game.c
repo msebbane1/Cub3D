@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 15:53:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:33:39 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	key_hook(int keycode, t_cub *cub)
 		rotate_left(cub);
 	if (keycode == ESC)
 		win_closed(cub);
-	//printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
 	return (0);
 }
 
@@ -44,11 +43,10 @@ int	raycast_loop(t_cub *cub)
 	draw_color_backgound(cub);
 	ft_raycasting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	//printf("posx = %f, posy = %f\n", cub->player.pos_x, cub->player.pos_y);
 	return (1);
 }
 
-int	mouse(int x, int y, t_cub *cub)
+int	key_mouse(int x, int y, t_cub *cub)
 {
 	(void)y;
 	mlx_mouse_hide();
@@ -70,7 +68,7 @@ void	game_hook(t_cub *cub)
 			&cub->img.line_length, &x);
 	mlx_hook(cub->win, 2, 0, key_hook, cub);
 	mlx_hook(cub->win, 17, 1L << 0, win_closed, cub);
-	mlx_hook(cub->win, 6, 0, mouse, cub);
+	//mlx_hook(cub->win, 6, 0, key_mouse, cub);
 	mlx_loop_hook(cub->mlx, raycast_loop, cub);
 	mlx_loop(cub->mlx);
 }

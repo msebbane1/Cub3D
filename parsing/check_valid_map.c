@@ -22,7 +22,6 @@ int	check_player_walls(t_cub *cub, int l, int c)
 	{
 		if (l == cub->map.size.y)
 			return (1);
-		printf("hello\n");
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
 			return (1);
@@ -169,12 +168,10 @@ int	check_spaces(t_cub *cub)
 	l = cub->map.index_spaces;
 	t = 0;
 	u = 0;
-	printf("index_spaces = %d\n", l);
 	while (cub->map.str[l] != NULL)
 	{
 		while (cub->map.str[l][0] == '\n' && cub->map.str[l][0] == '\0')
 		{
-			printf("hello2\n");
 			if (cub->map.str[l] != NULL)
 				break ;
 			if (t != 0)

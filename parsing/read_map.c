@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 14:47:46 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:58:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	copy_map(char **argv, t_cub *cub)
 		i++;
 	}
 	cub->map.str[i++] = ft_strdup(line);
-	free(line);
 	cub->map.str[i] = NULL;
+	free(line);
 	close(fd);
 }
 
