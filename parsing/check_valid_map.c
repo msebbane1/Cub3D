@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 14:57:15 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:57:15 lbamsebbane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,11 @@ int	check_spaces(t_cub *cub)
 			if (t != 0)
 				return (1);
 			l++;
+			/*			while (cub->map.str[l][u] == '\t' || cub->map.str[l][u] == ' ')
+				u++;
+			if (u == strlen(cub->map.str[l]))
+				return (1);
+*/
 		}
 		t++;
 		l++;
