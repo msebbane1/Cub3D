@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 11:29:14 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:28:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ void	check_colors(t_cub *cub, char *str, char c)
 	if (i != 3)
 		error_msg("Error\ninvalid RBG: You must have 3 colors");
 	ft_convert_rgb(c, cub, map_split);
+	free_tab(map_split);
 }

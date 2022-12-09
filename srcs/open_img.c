@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:04:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 15:30:12 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:46:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	check_texture_path(char	*path, int	*error)
 	}
 	else
 		*error = 0;
-	printf("path = %s\n", path);
 }
 
 t_texture	init_img(void	*mlx, char *path)

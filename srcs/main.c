@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 16:27:51 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/09 18:10:03 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int	main(int argc, char **argv)
 	position_player(cub);
 	game_start(cub);
 	game_hook(cub);
+	free_tab(cub->map.str);
 	//test_print(cub);
 }
