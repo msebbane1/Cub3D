@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:41:59 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/12 18:42:23 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 20:07:12 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ int	veref(t_cub *cub, int i)
 			g++;
 		j++;
 	}
-	printf("JJJJ ===== %d\n", j);
-	printf("GGGG ===== %d\n", g);
 	return (j - g);
 }

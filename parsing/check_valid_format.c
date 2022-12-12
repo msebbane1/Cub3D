@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_format.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:05:54 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 16:30:04 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 20:18:44 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,76 @@ int	parse_texture(t_cub *cub, char **map_split)
 	return (1);
 }
 
+char	**aie(char **map_split)
+{
+	char	**temp;
+	int		i;
+	int		j;
+	int		g;
+	int		t;
+	
+	i = 0;
+	j = 0;
+	g = 0;
+	t = 0;
+	while (map_split[i])
+	{
+		g = 0;
+		j = 0;
+		while (map_split[i][j])
+		{
+			if (map_split[i][j] == '\t')
+				g++;
+			j++;
+		}
+		if (j == g)
+			t++;
+		i++;
+	}
+	temp = malloc(sizeof(char *) * (i - t + 1));
+	t = 0;
+	j = 0;
+	i = 0;
+	while (map_split[i])
+	{
+		j = 0;
+		g = 0;
+		while (map_split[i][j])
+		{
+			if (map_split[i][j] == '\t' || map_split[i][j] == ' ')
+				g++;
+			j++;
+		}
+		printf("GGG === %d\n", g);
+		printf("JJJ === %d\n", j);
+		if (j == g)
+			i++;
+		else
+		{
+			temp[t] = malloc(sizeof(char) * j + 1);
+			j = 0;
+			g = 0;
+			while (map_split[i][j])
+			{
+				temp[t][g] = map_split[i][j];
+				g++;
+				j++;
+			}
+			temp[t][g] = '\0';
+			printf("LALA === %s\n", temp[t]);
+			t++;
+			i++;
+		}
+	}
+	temp[t] = NULL;
+	return (temp);
+}
+
 int	check_parse_format(t_cub *cub, char **map_split)
 {
 	char	*temp;
 
+	map_split = aie(map_split);
 	ft_trim_format(cub, map_split);
 	if (parse_color(cub, map_split))
 	{
