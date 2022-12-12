@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:45:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/24 12:48:57 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:39:19 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ char	**ft_split(char *str, char c)
 	tab[i] = NULL;
 	return (tab);
 }
-

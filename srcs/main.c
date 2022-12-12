@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 18:52:11 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 15:34:24 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	game_start(t_cub *cub)
 			SCREEN_W, SCREEN_H, "Cub3D");
 }
 
-void	start_error(int ac, char **av)
+void	start_error_arg(int ac, char **av)
 {
 	int		fd;
 	int		fd2;
@@ -36,7 +36,7 @@ void	start_error(int ac, char **av)
 	if (fd < 0)
 		error_msg("Error\nInvalid file :File doesn't exist");
 	if (fd2 != -1)
-		error_msg("Error\nFile invalid :Directory");
+		error_msg("Error\nInvalid file :Directory");
 	if (read(fd, &c, 1) < 1)
 		error_msg("Error\nInvalid file :Can't read file");
 	close(fd);
@@ -52,7 +52,7 @@ void	init_parse(t_cub *cub)
 	cub->map.ea = 0;
 	cub->map.c = 0;
 	cub->map.f = 0;
-	cub->map.index_spaces = 0;
+	cub->map.index_map = 0;
 	cub->player.nb_player = 0;
 	cub->map.texture[0].img = NULL;
 	cub->map.texture[1].img = NULL;
@@ -71,14 +71,12 @@ int	main(int argc, char **argv)
 
 	cub = malloc(sizeof(t_cub));
 	init_parse(cub);
-	start_error(argc, argv);
+	start_error_arg(argc, argv);
 	read_map(argv, cub);
 	check_valid_format(cub);
 	check_valid_map(cub);
-	remplace(cub);
+	remplace_map(cub);
 	position_player(cub);
 	game_start(cub);
 	game_hook(cub);
-	free_tab(cub->map.str);
-	//test_print(cub);
 }

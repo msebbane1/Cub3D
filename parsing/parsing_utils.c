@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 11:21:15 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:36:19 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,6 @@ char	*ft_strjoin_2(char *s1, char *s2)
 	return (s3);
 }
 
-int	ft_char_texture(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E'
-		|| line[i] == 'F' || line[i] == 'C' || line[i] == '\0')
-		return (1);
-	return (0);
-}
-
 int	ft_skip_format(char *line)
 {
 	int	i;
@@ -58,68 +45,58 @@ int	ft_skip_format(char *line)
 	i = 0;
 	while (line[i] == '\n' || line[i] == '\t' || line[i] == ' ')
 		i++;
-	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E'
+	if ((line[i] == 'N' && line[i + 1] == 'O')
+		|| (line[i] == 'S' && line[i + 1] == 'O')
+		|| (line[i] == 'W' && line[i + 1] == 'E')
+		|| (line[i] == 'E' && line[i + 1] == 'A')
 		|| line[i] == 'F' || line[i] == 'C' || line[i] == '\0')
 		return (1);
 	return (0);
 }
 
-int	line_size_max(t_cub *cub)
+void	ft_trim_format(t_cub *cub, char **map_split)
 {
-	int		l;
-	int		size_max;
+	char	*temp;
+	int		y;
 
-	l = cub->map.index_spaces;
-	size_max = 0;
-	while (cub->map.str[l])
+	y = 0;
+	while (map_split[y] && cub->map.index < 6)
 	{
-		if (size_max < ft_strlen(cub->map.str[l]))
-			size_max = ft_strlen(cub->map.str[l]);
-		l++;
+		temp = map_split[y];
+		map_split[y] = ft_strtrim(temp, "\t");
+		y++;
+		free(temp);
 	}
-	return (size_max);
 }
 
-void	free_tab(char **str)
+void	ft_trim_texture(t_cub *cub, char **map_split)
 {
-	int	i;
+	char	*temp;
+	int		y;
 
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
-
-int		check_characters_valid(t_cub *cub)
-{
-	int	l;
-	int	c;
-
-	l = 0;
-	while (cub->map.str[l])
+	y = 0;
+	while (map_split[y] && cub->map.index < 6)
 	{
-		c = 0;
-		while (cub->map.str[l][c])
-		{
-			if (cub->map.str[l][c] != ' ' && cub->map.str[l][c] != '\t'
-				&& cub->map.str[l][c] != '\r' && cub->map.str[l][c] != '\f'
-				&& cub->map.str[l][c] != '\v')
-				return (1);
-			c++;
-		}
-		l++;
+		temp = map_split[y];
+		map_split[y] = ft_strtrim(temp, "\t");
+		if (y == 2)
+			error_msg("Error\nInvalid texture : something after texture");
+		y++;
+		free(temp);
 	}
-	return (0);
 }
 
-int	check_params(char **str)
+void	ft_trim_colors(char **map_split)
 {
-	int	i;
+	int		t;
+	char	*temp;
 
-	i = 0;
-	if (str[i])
-		i++;
-	//if (i > 2)
-		//return (1);
-	return (i);
+	t = 2;
+	while (map_split[t])
+	{
+		temp = map_split[1];
+		map_split[1] = ft_strjoin_2(temp, map_split[t]);
+		t++;
+		free(temp);
+	}
 }

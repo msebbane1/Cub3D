@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:30:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/11/09 11:10:33 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:38:45 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (str1[i] - str2[i]);
 }
+
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;

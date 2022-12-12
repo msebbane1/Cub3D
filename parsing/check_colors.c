@@ -3,29 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:59:32 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 18:58:51 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:17:24 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	ft_check_letters(char *line)
+int	create_trgb(int t, int r, int g, int b)
 {
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if ((line[i] >= 58 && line[i] <= 127)
-			|| (line[i] >= 33 && line[i] <= 43)
-			|| (line[i] >= 46 && line[i] <= 47))
-			return (1);
-		i++;
-	}
-	return (0);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	ft_convert_rgb_floor(t_cub *cub, char **map_split)
@@ -40,29 +29,6 @@ void	ft_convert_rgb_sky(t_cub *cub, char **map_split)
 	cub->map.sky[0] = ft_atoi(map_split[0]);
 	cub->map.sky[1] = ft_atoi(map_split[1]);
 	cub->map.sky[2] = ft_atoi(map_split[2]);
-}
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	check_virgule(char *str)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	y = 0;
-	while (str[i])
-	{
-		if (str[i] == ',')
-			y++;
-		i++;
-	}
-	if (y != 2)
-		return (1);
-	return (0);
 }
 
 void	ft_convert_rgb(char c, t_cub *cub, char **map_split)
@@ -89,7 +55,7 @@ void	check_colors(t_cub *cub, char *str, char c)
 
 	i = 0;
 	if (!str)
-		error_msg("Error\ninvalid RGB");
+		error_msg("Error\nInvalid RGB");
 	if (check_virgule(str))
 		error_msg("Error\nInvalid RGB: must be separate by 2 virgule");
 	if (ft_check_letters(str))

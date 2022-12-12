@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:58:53 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 18:11:02 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:35:05 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,4 @@ void	position_player(t_cub *cub)
 		g++;
 		l++;
 	}
-	//printf("Player : pos_y = %f, pos_x = %f\n", cub->player.pos_y, cub->player.pos_x);
 }
