@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/08 14:57:15 lbamsebbane      ###   ########.fr       */
+/*   Updated: 2022/12/12 18:23:21 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ void	check_valid_map(t_cub *cub)
 	int		c;
 
 	l = cub->map.index_map;
-	if (check_spaces(cub))
-		error_msg("Error\nInvalid map something is empty");
 	if (check_start_line(cub))
 		error_msg("Error\nInvalid map :map not closed");
+	if (check_spaces(cub))
+		error_msg("Error\nInvalid map something is empty");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;
@@ -117,4 +117,3 @@ void	check_valid_map(t_cub *cub)
 	if (check_walls_first_line(cub))
 		error_msg("Error\nInvalid map :map not closed[firstchar]");
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:53:00 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 16:42:24 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:28:25 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	game_hook(t_cub *cub)
 	cub->img.addr = (int *) mlx_get_data_addr(cub->img.img,
 			&cub->img.bits_per_pixel, &cub->img.line_length, &x);
 	mlx_hook(cub->win, 2, 0, key_hook, cub);
-	//mlx_hook(cub->win, 6, 0, key_mouse, cub);
+	mlx_hook(cub->win, 6, 0, key_mouse, cub);
 	mlx_hook(cub->win, 17, 1L << 0, win_closed, cub);
 	mlx_loop_hook(cub->mlx, raycast_loop, cub);
 	mlx_loop(cub->mlx);

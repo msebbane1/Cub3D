@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 15:42:26 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:14:34 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define SCREEN_W 640
-# define SCREEN_H 480
+# define SCREEN_W 1080
+# define SCREEN_H 880
 # define D_W 640.0
 # define D_H 480.0
 # define MAP_L 24

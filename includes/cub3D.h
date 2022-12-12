@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 16:13:12 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:56:49 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			check_start_line(t_cub *cub);
 void		ft_trim_format(t_cub *cub, char **map_split);
 void		ft_trim_texture(t_cub *cub, char **map_split);
 void		ft_trim_colors(char **map_split);
+int         veref(t_cub *cub, int i);
 void		free_tab(char **str);
 //**********************************TEXTURES*****************************//
 t_texture	init_img(void	*mlx, char *texture_path);

@@ -6,41 +6,50 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:44:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 17:04:02 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 19:06:07 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+int	ristourne(t_cub *cub, int l)
+{
+	if (veref(cub, l))
+		return (1);
+	if (cub->map.str[l][0] != '\n' && cub->map.str[l][0] != '\0'
+		&& cub->map.str[l][0] != '\t' && cub->map.str[l][0] != ' ')
+		return (1);
+	return (0);
+}
+
 int	check_spaces(t_cub *cub)
 {
 	int	l;
 	int	t;
-	int	g;
-	int	u;
+	int	d;
 
-	l = cub->map.index_spaces;
+	l = cub->map.index_map;
 	t = 0;
-	u = 0;
-	g = 0;
+	d = 0;
 	while (cub->map.str[l] != NULL)
 	{
-		g = 0;
-		u = 0;
-		if (cub->map.str[l][0] == '\n' || cub->map.str[l][0] == '\0')
-			t++;
-		while (cub->map.str[l][u])
+		if (t != 0)
 		{
-			if (t != 0 && u == 0 && (cub->map.str[l][u] != '\n' || cub->map.str[l][u] != '\0'))
+			if (ristourne(cub, l))
 				return (1);
-			if (cub->map.str[l][u] != '0' && cub->map.str[l][u] != '1')
-				g++;
-			u++;
 		}
-		printf("UUUU ===== %d\n", u);
-		printf("GGGG ===== %d\n", g);
-		if (u == g && u != 0 && t != 0)
-			return (1);
+		else
+		{
+			if (cub->map.str[l][0] == '\n' || cub->map.str[l][0] == '\0')
+				t++;
+			else
+			{
+				if (veref(cub, l) && d != 0)
+					return (1);
+				if (!veref(cub, l))
+					d++;
+			}
+		}
 		l++;
 	}
 	return (0);
@@ -53,7 +62,7 @@ int	check_start_line(t_cub *cub)
 
 	l = cub->map.index_map;
 	c = 0;
-	while (cub->map.str[l][c] != '\n' && cub->map.str[l][c] != '\0')
+	while (cub->map.str[l][c])
 	{
 		if (cub->map.str[l][c] != '1')
 			return (1);

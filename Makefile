@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
+#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 11:18:46 by msebbane          #+#    #+#              #
-#    Updated: 2022/12/12 16:45:02 by msebbane         ###   ########.fr        #
+#    Updated: 2022/12/12 18:46:05 by lbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 CLINK= -framework OpenGL -framework AppKit
 
 SRCS = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c\
+	   get_next_line/gnl.c parsing/parsing_utils4.c\
 	   libft/libft.c libft/ft_split.c libft/ft_atoi.c libft/ft_strtrim.c\
 	   parsing/error_msg.c parsing/parsing_utils2.c parsing/parsing_utils.c\
 	   parsing/read_map.c parsing/check_valid_map.c parsing/check_colors.c\
