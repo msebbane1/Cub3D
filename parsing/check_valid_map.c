@@ -152,20 +152,19 @@ int	check_spaces(t_cub *cub)
 	{
 		g = 0;
 		u = 0;
+		if (cub->map.str[l][0] == '\n' || cub->map.str[l][0] == '\0')
+			t++;
 		while (cub->map.str[l][u])
 		{
 			if (t != 0 && u == 0 && (cub->map.str[l][u] != '\n' || cub->map.str[l][u] != '\0'))
 				return (1);
-			if (cub->map.str[l][0] == '\n' || cub->map.str[l][0] == '\0')
-			{
-				t++;
-				break ;
-			}
 			if (cub->map.str[l][u] != '0' && cub->map.str[l][u] != '1')
 				g++;
 			u++;
 		}
-		if (u == g && u != 0 && t != 0)
+		printf("UUUU ===== %d\n", u);
+		printf("GGGG ===== %d\n", g);
+		if (u == g && u != 0)
 			return (1);
 		l++;
 	}
