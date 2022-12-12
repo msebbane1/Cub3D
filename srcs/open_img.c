@@ -3,37 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   open_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:04:48 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 19:10:32 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 16:46:11 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	check_texture_path(char	*path, int	*error)
+void	check_fd(int fd, int fd2, int *error)
 {
-	int		fd;
-	int		fd2;
-	int		i;
+	char	c;
 
-	fd = 0;
-	i = 0;
-	fd = open(path, O_RDONLY);
-	fd2 = open(path, O_DIRECTORY);
 	if (fd <= 0)
 	{
-		error_msg("Error\nInvalid texture : doesn't exist");
+		error_msg("Error\nInvalid texture path : doesn't exist");
 		close(fd);
 		*error = 1;
 	}
 	if (fd2 != -1)
 	{
-		error_msg("Error\nTexture path invalid :Directory");
+		error_msg("Error\nInvalid texture path : Directory");
 		close(fd2);
 		*error = 1;
 	}
+	if (read(fd, &c, 1) < 1)
+	{
+		error_msg("Error\nInvalid Texture : Empty file");
+		*error = 1;
+	}
+	else
+		*error = 0;
+}
+
+void	check_texture_path(char	*path, int *error)
+{
+	int		fd;
+	int		fd2;
+
+	fd = open(path, O_RDONLY);
+	fd2 = open(path, O_DIRECTORY);
+	check_fd(fd, fd2, error);
 	close(fd);
 	close(fd2);
 	if (ft_strncmp(".xpm", path + ft_strlen(path) - 4, 4))

@@ -1,58 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remplace.c                                         :+:      :+:    :+:   */
+/*   remplace_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:00:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/09 18:10:54 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:34:37 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	remplace(t_cub *cub)
+void	malloc_new_map(t_cub *cub)
 {
-	int		i;
-	int		w;
-	int		t;
-	int		y;
+	int	l;
+	int	c;
+	int	t;
+	int	i;
 
-	i = 0;
-	w = 0;
+	l = cub->map.index_map;
 	t = 0;
-	y = cub->map.index_spaces;
-	while (cub->map.str[y])
+	while (cub->map.str[l])
 	{
-		w = 0;
-		while (cub->map.str[y][w])
-			w++;
-		if (i < w)
-			i = w;
-		y++;
+		c = 0;
+		while (cub->map.str[l][c])
+			c++;
+		if (i < c)
+			i = c;
+		l++;
 		t++;
 	}
-	w = 0;
 	cub->map.size.y = t + 1;
 	cub->map.size.x = i + 1;
 	cub->map.rmap = malloc(sizeof(char *) * (cub->map.size.y) + 1);
+}
+
+void	remplace_map(t_cub *cub)
+{
+	int		c;
+	int		t;
+	int		l;
+
+	l = cub->map.index_map;
 	t = 0;
-	y = cub->map.index_spaces;
-	while (cub->map.str[y])
+	malloc_new_map(cub);
+	while (cub->map.str[l])
 	{
-		w = 0;
-		while (cub->map.str[y][w])
-			w++;
-		cub->map.rmap[t] = malloc(sizeof(char) * w + 1);
-		w = 0;	
-		while (cub->map.str[y][w])
+		c = 0;
+		while (cub->map.str[l][c])
+			c++;
+		cub->map.rmap[t] = malloc(sizeof(char) * c + 1);
+		c = 0;
+		while (cub->map.str[l][c])
 		{
-			cub->map.rmap[t][w] = cub->map.str[y][w];
-			w++;
+			cub->map.rmap[t][c] = cub->map.str[l][c];
+			c++;
 		}
-		cub->map.rmap[t][w] = '\0';
-		y++;
+		cub->map.rmap[t][c] = '\0';
+		l++;
 		t++;
 	}
 	cub->map.rmap[t] = NULL;

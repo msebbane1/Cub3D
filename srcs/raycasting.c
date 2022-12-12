@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:32:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/12/09 16:31:17 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:51:24 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,6 @@ void	calculate_texture(t_cub	*cub)
 	wall_x -= floor((wall_x));
 	cub->rays.texture_x = (int)(wall_x
 			*(double)(cub->map.texture[cub->rays.side].width));
-}
-
-void	draw_walls(t_cub *cub, int start_draw, int end_draw)
-{
-	double	step;
-	double	texture_pos;
-	int		t_h;
-	int		t_w;
-	int		set_img;
-
-	t_h = cub->map.texture[cub->rays.side].height;
-	t_w = cub->map.texture[cub->rays.side].width;
-	step = 1.0 * t_h / cub->rays.line_h;
-	texture_pos = (start_draw - SCREEN_H / 2 + cub->rays.line_h / 2) * step;
-	while (start_draw < end_draw)
-	{	
-		cub->rays.texture_y = (int)texture_pos & (t_h - 1);
-		texture_pos += step;
-		set_img = cub->map.texture[cub->rays.side].addr[cub->rays.texture_y
-			* t_w + cub->rays.texture_x];
-		cub->img.addr[start_draw * SCREEN_W + cub->rays.nb] = set_img;
-		start_draw++;
-	}
 }
 
 void	calculate_start_end(t_cub *cub, int *start_draw, int *end_draw)
@@ -70,6 +47,7 @@ void	ft_raycasting(t_cub *cub)
 	int		end_draw;
 
 	cub->rays.nb = 0;
+	draw_color_backgound(cub);
 	while (cub->rays.nb < SCREEN_W)
 	{
 		cub->rays.camera = calculate_camera(cub);

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 19:42:05 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 15:42:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define SCREEN_W 1040
-# define SCREEN_H 980
+# define SCREEN_W 640
+# define SCREEN_H 480
 # define D_W 640.0
 # define D_H 480.0
 # define MAP_L 24
@@ -60,16 +60,20 @@ typedef struct s_ray
 	int		texture_y;
 }	t_ray;
 
+/* pos_x_y = la position de depart du joueur 
+* dir_x_y = la direction initial du joueur
+* plane_x_y = le plan de camera du joueur
+*/
 typedef struct s_player
 {
 	int		move;
 	int		nb_player;
-	double	pos_x; // pos de depart du joueur
-	double	pos_y; // pos de depart du joueur
-	double	dir_x; //direction initial du joueur
-	double	dir_y; //direction initial du joueur
-	double	plane_x; //le plan caméra du joueur
-	double	plane_y; //le plan caméra du joueur
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	double	view;
 	double	angle;
 	double	speed;
@@ -102,7 +106,7 @@ typedef struct s_map {
 	char		**str;
 	char		**rmap;
 	int			index;
-	int			index_spaces;
+	int			index_map;
 	int			no;
 	int			so;
 	int			we;

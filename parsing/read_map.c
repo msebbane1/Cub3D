@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:47:13 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/09 19:21:09 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:35:30 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	copy_map(char **argv, t_cub *cub)
 {
-	int		fd;
 	char	*line;
+	int		fd;
 	int		i;
 
 	i = 0;
@@ -27,8 +27,8 @@ void	copy_map(char **argv, t_cub *cub)
 		i++;
 	}
 	cub->map.str[i++] = ft_strdup(line);
-	free(line);
 	cub->map.str[i] = NULL;
+	free(line);
 	close(fd);
 }
 
@@ -41,9 +41,10 @@ int	count_lines(int fd)
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		i++;
 		free(line);
+		i++;
 	}
+	free(line);
 	return (i++);
 }
 
@@ -56,6 +57,6 @@ void	read_map(char **av, t_cub *cub)
 	close(fd);
 	cub->map.str = malloc(sizeof(char *) * (cub->map.size.y + 2));
 	if (!cub->map.str)
-		error_msg("Error\nWrong map");
+		error_msg("Error\nMalloc map");
 	copy_map(av, cub);
 }
