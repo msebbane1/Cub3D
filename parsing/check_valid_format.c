@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:05:54 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/13 14:03:34 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/13 16:56:25 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	parse_texture(t_cub *cub, char **map_split, int *nb_texture)
 	int		error;
 
 	if (!ft_strcmp(map_split[0], "SO") || !ft_strcmp(map_split[0], "NO")
-			|| !ft_strcmp(map_split[0], "EA") || !ft_strcmp(map_split[0], "WE"))
+		|| !ft_strcmp(map_split[0], "EA") || !ft_strcmp(map_split[0], "WE"))
 	{
 		check_texture_path(map_split[1], &error);
 		ft_trim_texture(cub, map_split);
@@ -115,9 +115,7 @@ void	check_valid_format(t_cub *cub)
 	{
 		map_split = split_map(cub, i, map_split);
 		if (check_parse_format(cub, map_split, &nb_texture))
-		{
 			cub->map.index++;
-		}
 		i++;
 	}
 	cub->map.index_map = check_new_index(cub);

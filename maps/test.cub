@@ -1,8 +1,8 @@
-		  WE ./textures/stone_bricks.xpm   	
-SO      	 	./textures/gold_ore.xpm				   
-EA    	./textures/diamond.xpm 			
-F 178,	255,  102
- 	 	NO ./textures/emerald_ore.xpm	
+WE ./textures/stone_bricks.xpm   	
+SO ./textures/gold_ore.xpm				   
+EA ./textures/diamond.xpm 			
+F 178, 255,  102
+NO ./textures/emerald_ore.xpm	
 C 51,255,255
 
 1111111111111111111111111

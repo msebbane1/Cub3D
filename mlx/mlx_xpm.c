@@ -1,6 +1,6 @@
-// mlx xpm
-// by ol
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 #include <OpenGL/gl3.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,7 +10,7 @@
 #include <string.h>
 #include	"mlx_int.h"
 
-typedef struct  s_xpm_col
+typedef struct s_xpm_col
 {
   int           name;
   int           col;
