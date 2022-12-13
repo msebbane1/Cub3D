@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 16:36:19 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/12 20:17:36 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_strjoin_2(char *s1, char *s2)
 		return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (!(s3 = malloc(len1 + len2 + 1)))
+	s3 = malloc(len1 + len2 + 1);
+	if (!s3)
 		return (0);
 	else
 	{

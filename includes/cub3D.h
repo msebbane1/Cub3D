@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:21:51 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 16:13:12 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:53:18 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,19 @@ int			ft_char_texture(char *line);
 int			create_trgb(int t, int r, int g, int b);
 int			ft_check_letters(char *line);
 void		remplace_map(t_cub *cub);
+char		**split_map(t_cub *cub, int i, char **map_split);
 //**********************************PARSING_UTILS****************************//
 char		*ft_strjoin_2(char *s1, char *s2);
 int			ft_skip_format(char *line);
 int			check_char(char c);
 int			check_new_index(t_cub *cub);
-int			check_spaces(t_cub *cub);
+int			check_spaces(t_cub *cub, int l, int t);
 int			check_virgule(char *str);
 int			check_start_line(t_cub *cub);
 void		ft_trim_format(t_cub *cub, char **map_split);
 void		ft_trim_texture(t_cub *cub, char **map_split);
 void		ft_trim_colors(char **map_split);
+int         veref(t_cub *cub, int i);
 void		free_tab(char **str);
 //**********************************TEXTURES*****************************//
 t_texture	init_img(void	*mlx, char *texture_path);
