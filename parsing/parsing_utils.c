@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:51:47 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 20:17:36 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/13 14:17:51 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int	ft_skip_format(char *line)
 	i = 0;
 	while (line[i] == '\n' || line[i] == '\t' || line[i] == ' ')
 		i++;
-	if ((line[i] == 'N' && line[i + 1] == 'O')
-		|| (line[i] == 'S' && line[i + 1] == 'O')
-		|| (line[i] == 'W' && line[i + 1] == 'E')
-		|| (line[i] == 'E' && line[i + 1] == 'A')
-		|| line[i] == 'F' || line[i] == 'C' || line[i] == '\0')
+	if ((line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+		|| (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
+		|| (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+		|| (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
+		|| (line[i] == 'F' && line[i + 1] == ' ')
+		|| (line[i] == 'C' && line[i + 1] == ' ') || line[i] == '\0')
 		return (1);
 	return (0);
 }
