@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:05:54 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/12 20:18:44 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/12 20:21:29 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ char	**aie(char **map_split)
 				g++;
 			j++;
 		}
-		printf("GGG === %d\n", g);
-		printf("JJJ === %d\n", j);
 		if (j == g)
 			i++;
 		else
@@ -130,7 +128,6 @@ char	**aie(char **map_split)
 				j++;
 			}
 			temp[t][g] = '\0';
-			printf("LALA === %s\n", temp[t]);
 			t++;
 			i++;
 		}
