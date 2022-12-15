@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:44:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/13 14:11:03 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/13 17:05:25 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ int	check_start_line(t_cub *cub)
 	{
 		if (cub->map.str[l][c] != '1'
 			&& cub->map.str[l][c] != '\t' && cub->map.str[l][c] != ' ')
-		{
-			printf("LLALA === %s\n", cub->map.str[l]);
 			return (1);
-		}
 		c++;
 	}
 	return (0);

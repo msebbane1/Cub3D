@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:42:06 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/13 13:46:08 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:51:40 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_player_walls(t_cub *cub, int l, int c)
 		{
 			if (ft_strlen(cub->map.str[l + 1]) < c
 				|| cub->map.str[l + 1][c] == ' '
-					|| cub->map.str[l + 1][c] == '\0')
+				|| cub->map.str[l + 1][c] == '\0')
 				return (1);
 		}
 		if (cub->map.str[l][c + 1] == ' ' || cub->map.str[l][c + 1] == '\0')
@@ -51,12 +51,11 @@ int	check_walls_zero(t_cub *cub, int l, int c)
 			return (1);
 		if (size_l2 < c || cub->map.str[l - 1][c] == ' '
 			|| cub->map.str[l - 1][c] == '\0')
-		{
 			return (1);
-		}
 		if (cub->map.str[l + 1] != NULL)
 		{
 			if (ft_strlen(cub->map.str[l + 1]) < c
+				|| cub->map.str[l + 1][c] == ' '
 				|| cub->map.str[l + 1][c] == '\0')
 				return (1);
 		}
@@ -103,7 +102,7 @@ void	check_valid_map(t_cub *cub)
 	if (check_start_line(cub))
 		error_msg("Error\nInvalid map");
 	if (check_spaces(cub, l, t))
-		error_msg("Error\nInvalid map something is empty");
+		error_msg("Error\nInvalid map");
 	while (cub->map.str[l] != NULL)
 	{
 		c = 0;

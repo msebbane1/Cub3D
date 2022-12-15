@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_map_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:43:05 by msebbane          #+#    #+#             */
-/*   Updated: 2022/12/13 16:56:14 by lbally           ###   ########.fr       */
+/*   Updated: 2022/12/13 17:23:49 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,20 +93,14 @@ char	**malloc_map_space(char **map_split)
 	return (new_map);
 }
 
-
 char	**split_map(t_cub *cub, int i, char **map_split)
 {
 	char	**tmp;
-//	char	*temp;
 	char	**new_map;
 	int		l;
 	int		c;
 
 	l = 0;
-	c = 0;
-//	while (cub->map.str[i][c])
-//		c++;
-//	temp = malloc(sizeof(char) * c + 1);
 	c = 0;
 	while (cub->map.str[i][c])
 	{
@@ -116,12 +110,10 @@ char	**split_map(t_cub *cub, int i, char **map_split)
 			cub->map.str[i][c] = cub->map.str[i][c];
 		c++;
 	}
-//	temp[c] = '\0';
 	map_split = ft_split(cub->map.str[i], ' ');
 	tmp = map_split;
 	new_map = malloc_map_space(tmp);
 	map_split = parse_space(tmp, l, c, new_map);
 	free_tab(tmp);
-//	free(temp);
 	return (map_split);
 }
